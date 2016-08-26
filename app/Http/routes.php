@@ -14,5 +14,6 @@
 Route::auth();
 
 Route::get('/', 'IndexController@index');
+Route::get('dashboard', 'DashboardController@index');
 
 Route::resource( 'students', 'StudentsController' );

@@ -13,12 +13,33 @@ class CreateStudentsTable extends Migration
     public function up()
     {
 
+      Schema::create('courses', function (Blueprint $table) {
+
+          $table->unique('_id');
+          $table->string('name');
+          $table->integer('order');
+
+          $table->timestamps();
+
+      });
+
+      Schema::create('series', function (Blueprint $table) {
+
+         $table->unique('_id');
+         $table->string('name');
+         $table->index('course_id');
+         $table->integer('order');
+
+         $table->timestamps();
+
+      });
+
+
       Schema::create('students', function (Blueprint $table) {
 
            $table->unique('_id');
            $table->string('enrollment_number');
            $table->string('name');
-           $table->index('course_id');
            $table->index('serie_id');
            $table->date('birth_date');
            $table->string('gender');
@@ -46,5 +67,7 @@ class CreateStudentsTable extends Migration
     public function down()
     {
         Schema::drop('students');
+        Schema::drop('series');
+        Schema::drop('courses');
     }
 }

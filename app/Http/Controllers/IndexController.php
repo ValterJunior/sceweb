@@ -15,7 +15,7 @@ class IndexController extends Controller
          if( Auth::guest() ){
             return Redirect::to('/login');
          }else{
-            return view('home.index');
+            return Redirect::to('/dashboard'); //view('home.index');
          }
 
 

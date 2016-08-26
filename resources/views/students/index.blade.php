@@ -36,18 +36,18 @@
                </thead>
 
                <tbody>
-                  <!-- <% @alunos.each do |aluno| %>
-                  <tr>
-                     <td><%= aluno.matricula %></td>
-                     <td><%= aluno.nome %></td>
-                     <td> <%= aluno.curso.nome %> </td>
-                     <td> <%= aluno.serie.nome %> </td>
-                     <td width="120">
-                        <a href="#" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                     </td>
-                  </tr>
-                  <% end %> -->
+                  @foreach( $students as $student )
+                     <tr>
+                        <td>{{ $student->enrollment_number }}</td>
+                        <td>{{ $student->name }}</td>
+                        <td> {{ $student->serie->course->name }} </td>
+                        <td> {{ $student->serie->name }} </td>
+                        <td width="120">
+                           <a href="#" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                           <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </td>
+                     </tr>
+                  @endforeach
                </tbody>
 
             </table>
