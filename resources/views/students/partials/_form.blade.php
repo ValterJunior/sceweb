@@ -16,18 +16,34 @@
 
                <div class="col-md-2 col-sm-4 col-xs-12">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('enrollment_number') ? ' has-error' : '' }}">
+
                      <label for="enrollment_number">Matrícula</label>
                      <input id="enrollment_number" name="enrollment_number" class="form-control" placeholder="Matrícula" value="{{ old( 'enrollment_number', $student->enrollment_number ?? "" ) }}" />
+
+                     @if ($errors->has('enrollment_number'))
+                  	    <span class="help-block">
+                  	        <strong>{{ $errors->first('enrollment_number') }}</strong>
+                  	    </span>
+                  	@endif
+
                   </div>
 
                </div>
 
                <div class="col-md-10 col-sm-8 col-xs-12">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+
                      <label for="name">Nome</label>
                      <input id="name" name="name" class="form-control" placeholder="Nome do aluno" value="{{ old( 'name', $student->name ?? "" ) }}" />
+
+                     @if ($errors->has('name'))
+                  	    <span class="help-block">
+                  	        <strong>{{ $errors->first('name') }}</strong>
+                  	    </span>
+                  	@endif
+
                   </div>
 
                </div>
@@ -151,18 +167,34 @@
 
                <div class="col-md-10 col-sm-8 col-xs-12">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('address_name') ? ' has-error' : '' }}">
+
                      <label for="address_name">Logradouro</label>
                      <input id="address_name" name="address_name" class="form-control" placeholder="Logradouro" value="{{ old( 'address_name', $student->address_name ?? "" ) }}" />
+
+                     @if ($errors->has('address_name'))
+                  	    <span class="help-block">
+                  	        <strong>{{ $errors->first('address_name') }}</strong>
+                  	    </span>
+                  	@endif
+
                   </div>
 
                </div>
 
                <div class="col-md-2 col-sm-4 col-xs-12">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('address_number') ? ' has-error' : '' }}">
+
                      <label for="address_number">Número</label>
                      <input id="address_number" name="address_number" class="form-control" placeholder="Número" value="{{ old( 'address_number', $student->address_number ?? "" ) }}" />
+
+                     @if ($errors->has('address_number'))
+                  	    <span class="help-block">
+                  	        <strong>{{ $errors->first('address_number') }}</strong>
+                  	    </span>
+                  	@endif
+
                   </div>
 
                </div>
@@ -173,18 +205,34 @@
 
                <div class="col-md-10 col-sm-8 col-xs-12">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('address_neighbor') ? ' has-error' : '' }}">
+
                      <label for="address_neighbor">Bairro</label>
                      <input id="address_neighbor" name="address_neighbor" class="form-control" placeholder="Bairro" value="{{ old( 'address_neighbor', $student->address_neighbor ?? "" ) }}" />
+
+                     @if ($errors->has('address_neighbor'))
+                  	    <span class="help-block">
+                  	        <strong>{{ $errors->first('address_neighbor') }}</strong>
+                  	    </span>
+                  	@endif
+
                   </div>
 
                </div>
 
                <div class="col-md-2 col-sm-4 col-xs-12">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('address_city') ? ' has-error' : '' }}">
+
                      <label for="address_city">Cidade</label>
                      <input id="address_city" name="address_city" class="form-control" placeholder="Cidade" value="{{ old( 'address_city', $student->address_city ?? "" ) }}" />
+
+                     @if ($errors->has('address_city'))
+                  	    <span class="help-block">
+                  	        <strong>{{ $errors->first('address_city') }}</strong>
+                  	    </span>
+                  	@endif
+
                   </div>
 
                </div>

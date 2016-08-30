@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use App\Models\{Student, Course, Serie};
 
-class StudentsController extends Controller
+class StudentsController extends BaseController
 {
 
    protected $rules = [
@@ -19,6 +19,12 @@ class StudentsController extends Controller
       'address_city'      => [ 'required' ],
    ];
 
+   public function __construct()
+   {
+      $this->setTitle( 'Alunos', 'Cadastros' );
+      parent::__construct();
+   }
+
    public function index(){
 
       $students = Student::orderBy('enrollment_number')->get();
@@ -28,6 +34,8 @@ class StudentsController extends Controller
    }
 
    public function store( Request $request ){
+
+      $this->validate( $request, $this->rules );
 
       $student = $this->createStudent( $request );
 
@@ -93,6 +101,5 @@ class StudentsController extends Controller
       $student->save();
 
    }
-
 
 }

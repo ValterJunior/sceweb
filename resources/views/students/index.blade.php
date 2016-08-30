@@ -10,7 +10,7 @@
 
          <div class="box-header">
 
-            <h3 class="box-title">Alunos</h3>
+            <h3 class="box-title">Alunos cadastrados</h3>
 
             <div class="pull-right">
                <a href="{{ url( action('StudentsController@create') ) }}" class="btn btn-primary">

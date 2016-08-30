@@ -91,7 +91,7 @@
             <ul class="sidebar-menu">
                <li class="header">Menu de opções</li>
                <li>
-                  <a href="{{ url('/') }}">
+                  <a href="{{ url( action('DashboardController@index') ) }}">
                      <i class="fa fa-home"></i> <span>Dashboard</span>
                   </a>
                </li>
@@ -103,11 +103,9 @@
                      </span>
                   </a>
                   <ul class="treeview-menu">
-                     <li>
-                        <a href="{{ url( action('StudentsController@index') ) }}"><i class="fa fa-users"></i> Alunos</a>
-                     </li>
-                     <li><a href="#"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
-                     <li><a href="#"><i class="fa fa-sitemap"></i> Séries</a></li>
+                     <li><a href="{{ url( action('StudentsController@index') ) }}"><i class="fa fa-users"></i> Alunos</a></li>
+                     <li><a href="{{ url( action('CoursesController@index') ) }}"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
+                     <li><a href="{{ url( action('SeriesController@index') ) }}"><i class="fa fa-sitemap"></i> Séries</a></li>
                      <li><a href="#"><i class="fa fa-tags"></i> Matérias</a></li>
                   </ul>
                </li>
@@ -156,18 +154,44 @@
       <div class="content-wrapper">
 
          <section class="content-header">
-            <h1>
-               Dashboard
-            </h1>
-            <ol class="breadcrumb">
-               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-               <li class="active">Dashboard</li>
-            </ol>
+            @if( $_menuTitle && $_groupTitle )
+               <h1> {{ $_menuTitle }} </h1>
+               <ol class="breadcrumb">
+                  <li><a href="#"><i class="fa fa-dashboard"></i> {{ $_groupTitle }}</a></li>
+                  <li class="active">{{ $_menuTitle }}</li>
+               </ol>
+            @endif
          </section>
 
          <!-- Main content -->
          <section class="content">
+
+            @if ( $errors && $errors->any() )
+
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="alert alert-danger margin-top-10" role="alert">
+                       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                       <span class="sr-only">Erro(s) encontrado(s)!</span>
+                       Por favor verifique as inconsistências encontradas abaixo.
+                     </div>
+                  </div>
+               </div>
+
+            @endif
+
+            @if (Session::has('message'))
+         		<div class="flash alert-info">
+         		</div>
+         		<div class="alert alert-success" role="alert">
+         		  <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+         		  <span class="sr-only">Message:</span>
+         			{{ Session::get('message') }}
+         		</div>
+         	@endif
+
             @yield('content')
+
          </section>
 
       </div>

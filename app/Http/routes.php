@@ -15,5 +15,8 @@ Route::auth();
 
 Route::get('/', 'IndexController@index');
 Route::get('dashboard', 'DashboardController@index');
+Route::get('courses/reorder/{id}/{direction}', 'CoursesController@reorder' );
 
 Route::resource( 'students', 'StudentsController' );
+Route::resource( 'courses' , 'CoursesController'  );
+Route::resource( 'series'  , 'SeriesController'   );
