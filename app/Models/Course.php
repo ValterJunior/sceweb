@@ -11,4 +11,8 @@ class Course extends Moloquent
       'order'
    ];
 
+   public function series(){
+      return $this->hasMany(Serie::class);
+   }
+
 }

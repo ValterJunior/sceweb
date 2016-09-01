@@ -333,8 +333,8 @@
 <!-- page script -->
 <script>
 
-$(".select2").select2();
-$("[data-mask]").inputmask();
-$(".decimal").inputmask('999.999.999,99', { numericInput: true } );
+   $(".select2").select2();
+   $("[data-mask]").inputmask();
+   $(".decimal").inputmask('999.999.999,99', { numericInput: true } );
 
 </script>

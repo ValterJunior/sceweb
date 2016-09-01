@@ -23,8 +23,13 @@ class CoursesController extends BaseController
    public function index(){
 
       $courses = Course::orderBy('order')->get();
+      $first   = $courses->first();
+      $last    = $courses->last();
 
-      return view('courses.index')->with('courses', $courses);
+      return view('courses.index')
+                ->with( compact('courses') )
+                ->with( compact('first') )
+                ->with( compact('last') );
 
    }
 
@@ -43,7 +48,7 @@ class CoursesController extends BaseController
    }
 
    public function show(){
-
+      return Redirect::to('courses');
    }
 
    public function update( Request $request ){
@@ -114,7 +119,7 @@ class CoursesController extends BaseController
             }
 
          // Direction = Down
-      } elseif ( (strtolower( $direction ) == 'd') && ($last->id <> $id) ) {
+         } elseif ( (strtolower( $direction ) == 'd') && ($last->id <> $id) ) {
 
             foreach( $courses as $course ){
 

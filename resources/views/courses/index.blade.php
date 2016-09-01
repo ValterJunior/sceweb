@@ -36,11 +36,11 @@
                <tbody>
                   @foreach( $courses as $course )
                      <tr>
-                        <td>{{ $course->order }}</td>
+                        <td class="text-center"><span class="badge">{{ $course->order }}</span></td>
                         <td>{{ $course->name }}</td>
-                        <td>
-                           <a href="{{ action('CoursesController@reorder', ['id' => $course->id, 'direction' => 'u']) }}" class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
-                           <a href="{{ action('CoursesController@reorder', ['id' => $course->id, 'direction' => 'd']) }}" class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+                        <td class="text-center">
+                           <a href="{{ isset($first) && $course == $first ? '#' : action('CoursesController@reorder', ['id' => $course->id, 'direction' => 'u']) }}" {!! isset($first) && $course == $first ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+                           <a href="{{ isset($last)  && $course == $last  ? '#' : action('CoursesController@reorder', ['id' => $course->id, 'direction' => 'd']) }}" {!! isset($last)  && $course == $last  ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
                            <a href="{{ action('CoursesController@edit', ['id' => $course->id] ) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                            <button type="button" class="btn btn-danger btn_delete" data-value="{{ $course->id }}" data-toggle="modal" data-target="#removeModal" ><i class="fa fa-trash"></i></button>
                         </td>
