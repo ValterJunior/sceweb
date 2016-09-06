@@ -29,6 +29,7 @@
                   <tr>
                      <th width="20">Ordem</th>
                      <th>Nome</th>
+                     <th width="80">Qtd. Séries</th>
                      <th width="160">Opções</th>
                   </tr>
                </thead>
@@ -37,7 +38,8 @@
                   @foreach( $courses as $course )
                      <tr>
                         <td class="text-center"><span class="badge">{{ $course->order }}</span></td>
-                        <td>{{ $course->name }}</td>
+                        <td><a href="{{action('CoursesController@show', ['id' => $course->id])}}">{{ $course->name }}</a></td>
+                        <td class="text-center">{{ $course->series->count() }}</td>
                         <td class="text-center">
                            <a href="{{ isset($first) && $course == $first ? '#' : action('CoursesController@reorder', ['id' => $course->id, 'direction' => 'u']) }}" {!! isset($first) && $course == $first ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
                            <a href="{{ isset($last)  && $course == $last  ? '#' : action('CoursesController@reorder', ['id' => $course->id, 'direction' => 'd']) }}" {!! isset($last)  && $course == $last  ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-down"></i></a>

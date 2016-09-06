@@ -22,13 +22,13 @@
                      <select name="course_id" id="course_id" class="form-control select2" style="width: 100%;" placeholder-data="Escolha o curso">
                         <option value=""></option>
                         @foreach( $courses as $course )
-                           <option value="{{ old( 'course_id', $course->id ?? "" ) }}" {!! isset($serie) && $serie->course == $course ? "selected" : "" !!} >{{ $course->name }}</option>
+                           <option value="{{ $course->id }}" {!! isset($serie) && old( 'course_id', $serie->course->id ) == $course->id ? "selected" : "" !!} >{{ $course->name }}</option>
                         @endforeach
                      </select>
 
                      @if ($errors->has('course_id'))
                          <span class="help-block">
-                             <strong>{{ $errors->first('name') }}</strong>
+                             <strong>{{ $errors->first('course_id') }}</strong>
                          </span>
                      @endif
 

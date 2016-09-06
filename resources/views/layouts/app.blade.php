@@ -103,10 +103,10 @@
                      </span>
                   </a>
                   <ul class="treeview-menu">
-                     <li><a href="{{ url( action('StudentsController@index') ) }}"><i class="fa fa-users"></i> Alunos</a></li>
-                     <li><a href="{{ url( action('CoursesController@index') ) }}"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
-                     <li><a href="{{ url( action('SeriesController@index') ) }}"><i class="fa fa-sitemap"></i> Séries</a></li>
-                     <li><a href="#"><i class="fa fa-tags"></i> Matérias</a></li>
+                     <li data-item="students"><a href="{{ url( action('StudentsController@index') ) }}"><i class="fa fa-users"></i> Alunos</a></li>
+                     <li data-item="courses"><a href="{{ url( action('CoursesController@index') ) }}"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
+                     <li data-item="series"><a href="{{ url( action('SeriesController@index') ) }}"><i class="fa fa-sitemap"></i> Séries</a></li>
+                     <li data-item=""><a href="#"><i class="fa fa-tags"></i> Matérias</a></li>
                   </ul>
                </li>
                <li class="treeview">
@@ -117,7 +117,7 @@
                      </span>
                   </a>
                   <ul class="treeview-menu">
-                     <li><a href="#"><i class="fa fa-table"></i> Quadro de notas</a></li>
+                     <li data-item=""><a href="#"><i class="fa fa-table"></i> Quadro de notas</a></li>
                   </ul>
                </li>
                <li class="treeview">
@@ -128,8 +128,8 @@
                      </span>
                   </a>
                   <ul class="treeview-menu">
-                     <li><a href="#"><i class="fa fa-bank"></i> Boleto bancário</a></li>
-                     <li><a href="#"><i class="fa fa-user"></i> Boleto por aluno</a></li>
+                     <li data-item=""><a href="#"><i class="fa fa-bank"></i> Boleto bancário</a></li>
+                     <li data-item=""><a href="#"><i class="fa fa-user"></i> Boleto por aluno</a></li>
                      <li>
                         <a href="#"><i class="fa fa-thumbs-o-up"></i> Declarações
                            <span class="pull-right-container">
@@ -137,10 +137,10 @@
                            </span>
                         </a>
                         <ul class="treeview-menu">
-                           <li><a href="#"><i class="fa fa-check-circle-o"></i> Aluno matriculado</a></li>
-                           <li><a href="#"><i class="fa fa-trophy"></i> Aluno foi aprovado</a></li>
-                           <li><a href="#"><i class="fa fa-square"></i> Aluno estudou</a></li>
-                           <li><a href="#"><i class="fa fa-star"></i> Aluno estuda</a></li>
+                           <li data-item=""><a href="#"><i class="fa fa-check-circle-o"></i> Aluno matriculado</a></li>
+                           <li data-item=""><a href="#"><i class="fa fa-trophy"></i> Aluno foi aprovado</a></li>
+                           <li data-item=""><a href="#"><i class="fa fa-square"></i> Aluno estudou</a></li>
+                           <li data-item=""><a href="#"><i class="fa fa-star"></i> Aluno estuda</a></li>
                         </ul>
                      </li>
                   </ul>
@@ -210,6 +210,28 @@
    	<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
    	<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
       <script src="/plugins/select2/select2.min.js"></script>
+
+      <script>
+
+         $("ul.sidebar-menu > li.treeview > ul.treeview-menu > li").each( function(index){
+
+            var parent = $(this).parent().parent();
+
+            if( $(this).data("item") === "{{ $controller }}" ){
+               $(this).addClass("active");
+               parent.addClass("active");
+            }else{
+
+               if(  $(this).hasClass("active") ){
+                  $(this).removeClass("active");
+                  parent.removeClass("active");
+               }
+
+            }
+
+         });
+
+      </script>
 
       @yield('extra_scripts')
 

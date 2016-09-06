@@ -47,8 +47,11 @@ class CoursesController extends BaseController
       return view('courses.create');
    }
 
-   public function show(){
-      return Redirect::to('courses');
+   public function show( string $id ){
+
+      $course = Course::find( $id );
+
+      return view( 'courses.show' )->with( compact('course') );
    }
 
    public function update( Request $request ){
