@@ -108,7 +108,7 @@
 
       $('#course_id').on("change", function(e){
 
-
+         window.location = "/";
       });
 
    </script>
