@@ -4,3 +4,5 @@
 
 <!-- AdminLTE App -->
 <script src="/js/app.min.js"></script>
+<!-- Custom js -->
+<script src="/js/utils.js"></script>

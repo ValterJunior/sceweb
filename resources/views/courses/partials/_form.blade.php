@@ -22,10 +22,10 @@
                      <input id="name" name="name" class="form-control" placeholder="Nome do curso" value="{{ old( 'name', $course->name ?? "" ) }}" />
 
                      @if ($errors->has('name'))
-                  	    <span class="help-block">
-                  	        <strong>{{ $errors->first('name') }}</strong>
-                  	    </span>
-                  	@endif
+                     <span class="help-block">
+                        <strong>{{ $errors->first('name') }}</strong>
+                     </span>
+                     @endif
 
                   </div>
 

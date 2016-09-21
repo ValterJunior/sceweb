@@ -21,16 +21,26 @@ class SeriesController extends BaseController
       parent::__construct();
    }
 
-   public function index(){
+   public function index( string $idCourse = null ){
 
-      $series  = Serie::orderBy('order')->get();
-      $first   = $series->first();
-      $last    = $series->last();
+      $courses = Course::orderBy('order')->get();
 
-      return view('series.index')
-                ->with( compact('series') )
-                ->with( compact('first') )
-                ->with( compact('last') );
+      if( !isset($idCourse) ){
+         return Redirect::route('courses.series.index', array( 'idCourse' => $courses->first()->id ) );
+      }else{
+
+         $series  = Serie::orderBy('order')->where( 'course_id', $idCourse )->get();
+         $first   = $series->first();
+         $last    = $series->last();
+
+         return view('series.index')
+                   ->with( compact('series') )
+                   ->with( compact('courses') )
+                   ->with( compact('idCourse') )
+                   ->with( compact('first') )
+                   ->with( compact('last') );
+      }
+
 
    }
 

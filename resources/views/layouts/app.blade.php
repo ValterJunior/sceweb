@@ -103,9 +103,9 @@
                      </span>
                   </a>
                   <ul class="treeview-menu">
-                     <li data-item="students"><a href="{{ url( action('StudentsController@index') ) }}"><i class="fa fa-users"></i> Alunos</a></li>
-                     <li data-item="courses"><a href="{{ url( action('CoursesController@index') ) }}"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
-                     <li data-item="series"><a href="{{ url( action('SeriesController@index') ) }}"><i class="fa fa-sitemap"></i> Séries</a></li>
+                     <li data-item="students"><a href="{{ url('students') }}"><i class="fa fa-users"></i> Alunos</a></li>
+                     <li data-item="courses"><a href="{{ url('courses') }}"><i class="fa fa-graduation-cap"></i> Cursos</a></li>
+                     <li data-item="series"><a href="{{ url('series') }}"><i class="fa fa-sitemap"></i> Séries</a></li>
                      <li data-item=""><a href="#"><i class="fa fa-tags"></i> Matérias</a></li>
                   </ul>
                </li>
@@ -210,6 +210,7 @@
    	<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
    	<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
       <script src="/plugins/select2/select2.min.js"></script>
+      <script src="/js/utils.js"></script>
 
       <script>
 
