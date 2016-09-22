@@ -16,10 +16,11 @@ Route::auth();
 Route::get('/', 'IndexController@index');
 Route::get('dashboard', 'DashboardController@index');
 Route::get('courses/reorder/{id}/{direction}', 'CoursesController@reorder' );
-Route::get('series/reorder/{id}/{direction}', 'SeriesController@reorder' );
-Route::get('series', 'SeriesController@index');
+Route::get('courses/{courses}/series/reorder/{id}/{direction}', 'SeriesController@reorder' );
 
 Route::resource( 'students', 'StudentsController' );
 Route::resource( 'courses' , 'CoursesController'  );
 Route::resource('courses.series', 'SeriesController');
 
+Route::get('series', 'SeriesController@index');
+Route::post('series', 'SeriesController@store');

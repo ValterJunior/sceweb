@@ -10,33 +10,27 @@
 
          <div class="box-body">
 
+            <input type="hidden" name="course_id" value="{{ $idCourse }}">
             <input type="hidden" id="id" name="id" value="{{ old( 'id', $serie->id ?? "" ) }}">
 
             <div class="row">
 
-               <div class="col-md-6">
+               <div class="col-md-12">
 
-                  <div class="form-group{{ $errors->has('course_id') ? ' has-error' : '' }}">
+                  <div class="form-group">
 
-                     <label for="course_id">Curso</label>
-                     <select name="course_id" id="course_id" class="form-control select2" style="width: 100%;" placeholder-data="Escolha o curso">
-                        <option value=""></option>
-                        @foreach( $courses as $course )
-                           <option value="{{ $course->id }}" {!! isset($serie) && old( 'course_id', $serie->course->id ) == $course->id ? "selected" : "" !!} >{{ $course->name }}</option>
-                        @endforeach
-                     </select>
-
-                     @if ($errors->has('course_id'))
-                         <span class="help-block">
-                             <strong>{{ $errors->first('course_id') }}</strong>
-                         </span>
-                     @endif
-
+                     <label>Curso</label>
+                     <p>{{ $courseName }}</p>
+                     
                   </div>
 
                </div>
 
-               <div class="col-md-6">
+            </div>
+
+            <div class="row">
+
+               <div class="col-md-10">
 
                   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
@@ -49,6 +43,17 @@
                   	    </span>
                   	@endif
 
+                  </div>
+
+               </div>
+
+               <div class="col-md-2">
+
+                  <div class="form-group">
+
+                     <label>Ordem</label>
+                     <p><span class="badge">{{ $serie->order }}</span></p>
+                     
                   </div>
 
                </div>

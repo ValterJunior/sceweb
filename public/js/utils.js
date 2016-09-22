@@ -7,7 +7,7 @@ String.format = function() {
     for (var i = 1; i < arguments.length; i++) {
         // "gm" = RegEx options for Global search (more than one instance)
         // and for Multiline search
-        var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+        var regEx = new RegExp("\\_" + (i - 1) + "\\_", "gm");
         theString = theString.replace(regEx, arguments[i]);
     }
     

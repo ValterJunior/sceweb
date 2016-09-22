@@ -26,7 +26,7 @@ class SeriesController extends BaseController
       $courses = Course::orderBy('order')->get();
 
       if( !isset($idCourse) ){
-         return Redirect::route('courses.series.index', array( 'idCourse' => $courses->first()->id ) );
+         return Redirect::route('courses.series.index', [ 'idCourse' => $courses->first()->id ] );
       }else{
 
          $series  = Serie::orderBy('order')->where( 'course_id', $idCourse )->get();
@@ -47,18 +47,23 @@ class SeriesController extends BaseController
    public function store( Request $request ){
 
       $this->validate( $request, $this->rules );
+      $this->createSerie( $request );
 
-      $serie = $this->createSerie( $request );
+      $idCourse = $request->input('course_id');
 
-      return Redirect::to('series')->with('message', 'Série cadastrada com sucesso!');
+      return Redirect::route('courses.series.index', array( 'idCourse' => $idCourse ))->with('message', 'Série cadastrada com sucesso!');
 
    }
 
-   public function create(){
+   public function create( string $idCourse ){
 
-      $courses = Course::orderBy('order')->get();
+      $serie  = new Serie();
+      $course = Course::find($idCourse);
 
-      return view('series.create')->with( compact('courses') );
+      return view('series.create')
+               ->with( 'serie', $serie )
+               ->with( 'idCourse', $idCourse )
+               ->with( 'courseName', $course->name );
 
    }
 
@@ -70,10 +75,11 @@ class SeriesController extends BaseController
 
       $this->validate( $request, $this->rules );
 
-      // Saving course!
-      $course = $this->updateSerie( $request );
+      // Saving serie!
+      $this->updateSerie( $request );
+      $idCourse = $request->input('course_id');
 
-      return Redirect::to('series')->with('message', 'Serie atualizada com sucesso!');
+      return Redirect::route('courses.series.index', array( 'idCourse' => $idCourse ))->with('message', 'Serie atualizada com sucesso!');
 
    }
 
@@ -90,25 +96,28 @@ class SeriesController extends BaseController
 
    }
 
-   public function edit( string $id ){
+   public function edit( string $idCourse, string $id ){
 
-      $serie   = Serie::find($id);
-      $courses = Course::orderBy('order')->get();
+      $course     = Course::find($idCourse);
+      $serie      = $course->series()->find($id);
+      $courseName = $course->name;
 
       if( !$serie ){
          abort(404);
       }
 
       return view('series.edit')->with( compact('serie') )
-                                ->with( compact('courses') );
+                                ->with( compact('idCourse') )
+                                ->with( compact('courseName'));
 
    }
 
-   public function reorder( string $id, string $direction ){
+   public function reorder( string $idCourse, string $id, string $direction ){
 
-      if( isset( $id ) && isset( $direction ) ){
+      if( isset( $idCourse ) && isset( $id ) && isset( $direction ) ){
 
-         $series      =  Serie::orderBy('order')->get();
+         $course      = Course::find($idCourse);
+         $series      = $course->series()->orderBy('order')->get();
          $first       = $series->first();
          $last        = $series->last();
          $savedSerie  = null;
@@ -121,7 +130,7 @@ class SeriesController extends BaseController
                if( $serie->id == $id ){
 
                   if( $savedSerie ){
-                     $order              = $savedSerie->order;
+                     $order             = $savedSerie->order;
                      $savedSerie->order = $serie->order;
                      $serie->order      = $order;
                      $serie->save();
@@ -142,7 +151,7 @@ class SeriesController extends BaseController
 
                if( $serie->id == $id ){
                   $savedSerie = $serie;
-               }elseif( $savedCourse ){
+               }elseif( $savedSerie ){
                   $order             = $savedSerie->order;
                   $savedSerie->order = $serie->order;
                   $serie->order      = $order;
@@ -157,7 +166,7 @@ class SeriesController extends BaseController
 
       }
 
-      return Redirect::to('series');
+      return Redirect::route('courses.series.index', array( 'idCourse' => $idCourse ));
 
    }
 
@@ -182,21 +191,29 @@ class SeriesController extends BaseController
    }
    private function putSerie( Serie $serie, Request $request ){
 
-      $course_id    = $request->input('course_id');
-      $serie->name  = $request->input( 'name' );
-      $serie->order = Serie::count() + 1;
+      $course_id = $request->input('course_id');
 
       if( $course_id ){
-         $course = Course::find($course_id);
+
+         $course       = Course::find($course_id);
+         $serie->name  = $request->input( 'name' );
+
+         // Just when it'snt in edit mode!
+         if( !$serie->_id ){
+            $serie->order = $course->series()->count() + 1;
+         }
+
          $course->series()->save( $serie );
-         $this->updateOrders();
+         
+         $this->updateOrders( $course );
+
       }
 
    }
 
-   private function updateOrders(){
+   private function updateOrders( Course $course ){
 
-      $series = Serie::orderBy('order')->get();
+      $series = $course->series()->orderBy('order')->get();
       $cont   = 1;
 
       foreach( $series as $serie ){

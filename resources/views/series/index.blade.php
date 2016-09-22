@@ -61,7 +61,6 @@
                      <tr>
                         <th width="20">Ordem</th>
                         <th>Nome</th>
-                        <th>Curso</th>
                         <th width="160">Opções</th>
                      </tr>
                   </thead>
@@ -71,10 +70,9 @@
                         <tr>
                            <td class="text-center"><span class="badge">{{ $serie->order }}</span></td>
                            <td>{{ $serie->name }}</td>
-                           <td>{{ $serie->course->name }}</td>
                            <td class="text-center">
-                              <a href="{{ isset($first) && $serie == $first ? '#' : action('SeriesController@reorder', ['id' => $serie->id, 'direction' => 'u']) }}" {!! isset($first) && $serie == $first ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
-                              <a href="{{ isset($last)  && $serie == $last  ? '#' : action('SeriesController@reorder', ['id' => $serie->id, 'direction' => 'd']) }}" {!! isset($last)  && $serie == $last  ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
+                              <a href="{{ isset($first) && $serie == $first ? '#' : action('SeriesController@reorder', [ 'idCourse' => $idCourse, 'id' => $serie->id, 'direction' => 'u']) }}" {!! isset($first) && $serie == $first ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-up"></i></a>
+                              <a href="{{ isset($last)  && $serie == $last  ? '#' : action('SeriesController@reorder', [ 'idCourse' => $idCourse, 'id' => $serie->id, 'direction' => 'd']) }}" {!! isset($last)  && $serie == $last  ? 'disabled="true"' : ''  !!} class="btn btn-default"><i class="fa fa-arrow-down"></i></a>
                               <a href="{{ action('SeriesController@edit'   , [ 'idCourse' => $idCourse, 'id' => $serie->id] ) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                               <button type="button" class="btn btn-danger btn_delete" data-value="{{ $serie->id }}" data-toggle="modal" data-target="#removeModal" ><i class="fa fa-trash"></i></button>
                            </td>
@@ -108,7 +106,8 @@
 
       $('#course_id').on("change", function(e){
 
-         window.location = "/";
+         window.location = String.format( "{{ route('courses.series.index', ['idCourse' => '_0_']) }}", $(this).val() );
+         
       });
 
    </script>
