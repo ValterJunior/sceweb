@@ -83,16 +83,20 @@ class SeriesController extends BaseController
 
    }
 
-   public function destroy( string $id ){
+   public function destroy( string $idCourse, string $id ){
 
-      if( isset($id) ){
-         Serie::find($id)->delete();
-         $this->updateOrders();
+      if( isset($idCourse) && isset($id) ){
+
+         $course = Course::find($idCourse);
+         $course->series()->find($id)->delete();
+         
+         $this->updateOrders( $course );
+
       }else{
          abort(404);
       }
 
-      return Redirect::to('series')->with('message', 'Série excluída com sucesso!');
+      return Redirect::route('courses.series.index', array( 'idCourse' => $idCourse ))->with('message', 'Série excluída com sucesso!');
 
    }
 

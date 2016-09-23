@@ -68,7 +68,7 @@
 
 @section('extra_scripts')
 
-   @include( 'partials._modal_delete', [ 'deleteMethod' => 'CoursesController@destroy', 'button_class' => 'btn_delete', 'entity' => ['o', 'curso'] ] )
+   @include( 'partials._modal_delete', [ 'deleteMethod' => route( 'courses.destroy', [ 'p1' => '_0_' ] ), 'button_class' => 'btn_delete', 'entity' => ['este', 'curso'] ] )
 
    <script>
       $("#dt_courses").DataTable();

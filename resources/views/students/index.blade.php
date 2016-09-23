@@ -44,7 +44,7 @@
                         <td> {{ $student->serie->name }} </td>
                         <td width="120">
                            <a href="#" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                           <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                           <a href="#" class="btn btn-danger btn_delete" data-value="{{ $student->id }}"><i class="fa fa-trash"></i></a>
                         </td>
                      </tr>
                   @endforeach
@@ -67,6 +67,8 @@
 @endsection
 
 @section('extra_scripts')
+
+   @include( 'partials._modal_delete', [ 'deleteMethod' => route( 'students.destroy', [ 'p1' => '_0_' ] ), 'button_class' => 'btn_delete', 'entity' => ['este', 'estudante'] ] )
 
    <script>
       $("#dt_students").DataTable();

@@ -210,6 +210,8 @@
    	<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
    	<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
       <script src="/plugins/select2/select2.min.js"></script>
+      <script src="/plugins/input-mask/jquery.inputmask.js"></script>
+      <script src="/plugins/input-mask/jquery.inputmask.regex.extensions.js"></script>
 
       <script>
 

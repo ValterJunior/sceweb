@@ -19,7 +19,7 @@
                   <div class="form-group{{ $errors->has('enrollment_number') ? ' has-error' : '' }}">
 
                      <label for="enrollment_number">Matrícula</label>
-                     <input id="enrollment_number" name="enrollment_number" class="form-control" placeholder="Matrícula" value="{{ old( 'enrollment_number', $student->enrollment_number ?? "" ) }}" />
+                     <input id="enrollment_number" name="enrollment_number" class="form-control" placeholder="Matrícula" maxlength="6" value="{{ old( 'enrollment_number', $student->enrollment_number ?? "" ) }}" />
 
                      @if ($errors->has('enrollment_number'))
                   	    <span class="help-block">
@@ -36,7 +36,7 @@
                   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
                      <label for="name">Nome</label>
-                     <input id="name" name="name" class="form-control" placeholder="Nome do aluno" value="{{ old( 'name', $student->name ?? "" ) }}" />
+                     <input id="name" name="name" class="form-control uppercase" placeholder="Nome do aluno" value="{{ old( 'name', $student->name ?? "" ) }}" />
 
                      @if ($errors->has('name'))
                   	    <span class="help-block">
@@ -135,7 +135,7 @@
 
                   <div class="form-group">
                      <label for="father_name">Nome do Pai</label>
-                     <input id="father_name" name="father_name" class="form-control" placeholder="Nome do pai" value="{{ old( 'father_name', $student->father_name ?? "" ) }}" />
+                     <input id="father_name" name="father_name" class="form-control uppercase" placeholder="Nome do pai" value="{{ old( 'father_name', $student->father_name ?? "" ) }}" />
                   </div>
 
                </div>
@@ -144,7 +144,7 @@
 
                   <div class="form-group">
                      <label for="mother_name">Nome da Mãe</label>
-                     <input id="mother_name" name="mother_name" class="form-control" placeholder="Nome da mãe" value="{{ old( 'mother_name', $student->mother_name ?? "" ) }}" />
+                     <input id="mother_name" name="mother_name" class="form-control uppercase" placeholder="Nome da mãe" value="{{ old( 'mother_name', $student->mother_name ?? "" ) }}" />
                   </div>
 
                </div>
@@ -170,7 +170,7 @@
                   <div class="form-group{{ $errors->has('address_name') ? ' has-error' : '' }}">
 
                      <label for="address_name">Logradouro</label>
-                     <input id="address_name" name="address_name" class="form-control" placeholder="Logradouro" value="{{ old( 'address_name', $student->address_name ?? "" ) }}" />
+                     <input id="address_name" name="address_name" class="form-control uppercase" placeholder="Logradouro" value="{{ old( 'address_name', $student->address_name ?? "" ) }}" />
 
                      @if ($errors->has('address_name'))
                   	    <span class="help-block">
@@ -208,7 +208,7 @@
                   <div class="form-group{{ $errors->has('address_neighbor') ? ' has-error' : '' }}">
 
                      <label for="address_neighbor">Bairro</label>
-                     <input id="address_neighbor" name="address_neighbor" class="form-control" placeholder="Bairro" value="{{ old( 'address_neighbor', $student->address_neighbor ?? "" ) }}" />
+                     <input id="address_neighbor" name="address_neighbor" class="form-control uppercase" placeholder="Bairro" value="{{ old( 'address_neighbor', $student->address_neighbor ?? "" ) }}" />
 
                      @if ($errors->has('address_neighbor'))
                   	    <span class="help-block">
@@ -225,7 +225,7 @@
                   <div class="form-group{{ $errors->has('address_city') ? ' has-error' : '' }}">
 
                      <label for="address_city">Cidade</label>
-                     <input id="address_city" name="address_city" class="form-control" placeholder="Cidade" value="{{ old( 'address_city', $student->address_city ?? "" ) }}" />
+                     <input id="address_city" name="address_city" class="form-control uppercase" placeholder="Cidade" value="{{ old( 'address_city', $student->address_city ?? "" ) }}" />
 
                      @if ($errors->has('address_city'))
                   	    <span class="help-block">
@@ -331,10 +331,17 @@
 </div>
 
 <!-- page script -->
-<script>
+@section('extra_scripts')
 
-   $(".select2").select2();
-   $("[data-mask]").inputmask();
-   $(".decimal").inputmask('999.999.999,99', { numericInput: true } );
+   <script>
 
-</script>
+      $(".select2").select2();
+      $("[data-mask]").inputmask();
+
+      setZeroMask( "enrollment_number");
+
+      $(".decimal").inputmask('999.999.999,99', { numericInput: true } );
+
+   </script>
+
+@endsection

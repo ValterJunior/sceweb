@@ -98,6 +98,7 @@
 
 @section('extra_scripts')
 
+   @include( 'partials._modal_delete', [ 'deleteMethod' => route( 'courses.series.destroy', [ 'p1' => $idCourse, 'p2' => '_0_' ] ), 'button_class' => 'btn_delete', 'entity' => ['esta', 'série'] ] )
 
    <script>
 

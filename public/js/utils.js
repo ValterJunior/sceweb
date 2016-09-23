@@ -13,3 +13,20 @@ String.format = function() {
     
     return theString;
 }
+
+function setZeroMask( id ){
+    
+    var obj  = $("#" + id);
+    var size = obj.attr("maxlength");
+
+    obj.inputmask();
+ 
+    obj.focusout(function(){
+
+        var value = $(this).val();
+        while (value.length < size) value = "0" + value;
+        $(this).val(value);
+
+    });
+
+}

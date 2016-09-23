@@ -1,4 +1,4 @@
-{!! Form::open( [ 'method' => 'DELETE', 'action' => [$deleteMethod, 0], 'id' => 'form_' . $button_class ] ) !!}
+{!! Form::open( [ 'method' => 'DELETE', 'id' => 'form_' . $button_class ] ) !!}
 
    <input type="hidden" name="id" />
 
@@ -37,19 +37,9 @@
         var id = $(this).data('value');
 
         if( id ){
-           $("#{{ 'form_' . $button_class }}").attr("action", "{{ action( $deleteMethod, ['id' => ''] ) }}/" + id );
+           $("#{{ 'form_' . $button_class }}").attr("action", String.format( "{{ $deleteMethod }}", id ) );
         }
 
    });
-
-   // $("#{{ 'form_' . $button_class }}").submit( function(){
-   //
-   //    var id = $(".{{ $button_class }}").attr("data-value");
-   //    alert(id);
-   //    if( id ){
-   //       $(this).attr("action", "{{ action( $deleteMethod, ['id' => ''] ) }}/" + id );
-   //    }
-   //
-   // });
 
 </script>
