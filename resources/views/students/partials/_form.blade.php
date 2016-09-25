@@ -54,15 +54,21 @@
 
                <div class="col-md-6">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('course_id') ? ' has-error' : '' }}">
 
                      <label>Curso</label>
 
-                     <select class="form-control select2" style="width: 100%;">
-                        <option>Educação infantil</option>
-                        <option>Ensino fundamental</option>
-                        <option>Ensino médio</option>
+                     <select id="course_id" name="course_id" class="form-control select2">
+                        @foreach( $courses as $course )
+                           <option value="{{ $course->id }}" {{ old('course_id', $student->course_id ?? "") === $course->id ? 'selected' : '' }} >{{ $course->name }}</option>
+                        @endforeach
                      </select>
+
+                     @if ($errors->has('course_id'))
+                         <span class="help-block">
+                             <strong>{{ $errors->first('course_id') }}</strong>
+                         </span>
+                     @endif
 
                   </div>
 
@@ -70,15 +76,17 @@
 
                <div class="col-md-6">
 
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('serie_id') ? ' has-error' : '' }}">
 
                      <label>Série</label>
 
-                     <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Maternalzinho</option>
-                        <option>Pré-alfabetização</option>
-                        <option>Alfabetização</option>
-                     </select>
+                     <select id="serie_id" name="serie_id" data-placeholder="Selecione uma série" class="form-control select2"></select>
+
+                     @if ($errors->has('serie_id'))
+                         <span class="help-block">
+                             <strong>{{ $errors->first('serie_id') }}</strong>
+                         </span>
+                     @endif
 
                   </div>
 
@@ -119,8 +127,8 @@
                      <label>Sexo</label>
 
                      <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Masculino</option>
-                        <option>Feminino</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
                      </select>
 
                   </div>
@@ -248,9 +256,9 @@
                      <label>Estado</label>
 
                      <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Pernambuco</option>
-                        <option>Paraíba</option>
-                        <option>Rio Grande do Norte</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PR">Paraíba</option>
+                        <option value="RN">Rio Grande do Norte</option>
                      </select>
 
                   </div>
@@ -267,7 +275,7 @@
                         <div class="input-group-addon">
                            <i class="fa fa-phone"></i>
                         </div>
-                        <input type="text" id="phone_number" name="phone_number" class="form-control" data-inputmask='"mask": "(99) 9.9999-9999"' data-mask value="{{ old( 'phone_number', $student->phone_number ?? "" ) }}" />
+                        <input type="text" id="phone_number" name="phone_number" class="form-control" data-inputmask='"mask": "(99) 9999-9999"' data-mask value="{{ old( 'phone_number', $student->phone_number ?? "" ) }}" />
                      </div>
 
                   </div>
@@ -341,6 +349,46 @@
       setZeroMask( "enrollment_number");
 
       $(".decimal").inputmask('999.999.999,99', { numericInput: true } );
+
+      $("#course_id").change(function(e){
+
+         loadSeries( $(this).val() );
+
+      });
+
+      $(document).ready(function(){
+
+         $("#course_id").trigger("change");
+
+      });
+
+      function loadSeries( idCourse ){
+
+         $("#serie_id").select2( { ajax: {
+               url: "{{ url('series/getSeries') }}/" + idCourse,
+               dataType: "json",
+               processResults: function(data, params){
+
+                  var selectData = [];
+
+                  selectData.push({ id: '', text: '' });
+
+                  $.each( data, function( index, element){
+                     selectData.push( { id: element['_id'], text: element['name'] } );
+                  });
+
+                  return { results: selectData };
+
+
+               },
+               cache: true
+
+            }
+         });
+
+         $("#serie_id").val( "{{ old('serie_id', $student->serie_id) }}" );
+
+      }
 
    </script>
 

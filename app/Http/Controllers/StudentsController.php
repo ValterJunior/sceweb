@@ -44,7 +44,14 @@ class StudentsController extends BaseController
    }
 
    public function create(){
-      return view('students.create');
+
+      $student = new Student();
+      $courses = Course::orderBy('order')->get();
+
+      return view('students.create')
+               ->with( 'student', $student )
+               ->with( 'courses', $courses );
+
    }
 
    public function show(){
@@ -60,7 +67,12 @@ class StudentsController extends BaseController
    }
 
    public function edit(){
-      return view('students.edit');
+
+      $courses = Course::orderBy('order')->get();
+
+      return view('students.edit')
+               ->with( compact($courses) );
+
    }
 
    private function createStudent( Request $request ){

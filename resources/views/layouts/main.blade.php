@@ -17,6 +17,7 @@
        <link rel="stylesheet" href="/plugins/select2/select2.min.css">
        <link rel="stylesheet" type="text/css" href="/css/AdminLTE.min.css" />
        <link rel="stylesheet" type="text/css" href="/css/skins/_all-skins.min.css" />
+       <link rel="stylesheet" type="text/css" href="/css/app.css" />
 
        @yield('extra_head')
 

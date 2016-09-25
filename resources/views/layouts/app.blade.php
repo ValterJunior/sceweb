@@ -212,6 +212,7 @@
       <script src="/plugins/select2/select2.min.js"></script>
       <script src="/plugins/input-mask/jquery.inputmask.js"></script>
       <script src="/plugins/input-mask/jquery.inputmask.regex.extensions.js"></script>
+      <script src="/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 
       <script>
 

@@ -24,8 +24,16 @@ function setZeroMask( id ){
     obj.focusout(function(){
 
         var value = $(this).val();
-        while (value.length < size) value = "0" + value;
-        $(this).val(value);
+
+        if( value.length > 0 ){
+
+            while (value.length < size){
+              value = "0" + value;  
+            } 
+            
+            $(this).val(value);
+
+        }
 
     });
 

@@ -24,3 +24,4 @@ Route::resource('courses.series', 'SeriesController');
 
 Route::get('series', 'SeriesController@index');
 Route::post('series', 'SeriesController@store');
+Route::get('series/getSeries/{idCourse?}', 'SeriesController@getseries');

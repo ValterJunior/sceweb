@@ -174,6 +174,18 @@ class SeriesController extends BaseController
 
    }
 
+   public function getseries( String $idCourse = null ){
+
+      if( $idCourse ){
+         $series = Course::find($idCourse)->series()->get()->toArray();
+      }else{
+         $series = Serie::all()->toArray();
+      }
+
+      return response()->json( $series );
+
+   }
+
    private function createSerie( Request $request ){
 
       $serie = new Serie();
