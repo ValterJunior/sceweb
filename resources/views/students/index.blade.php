@@ -43,7 +43,7 @@
                         <td> {{ $student->serie->course->name }} </td>
                         <td> {{ $student->serie->name }} </td>
                         <td width="120">
-                           <a href="#" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                           <a href="{{ action('StudentsController@edit', ['id' => $student->id] ) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                            <a href="#" class="btn btn-danger btn_delete" data-value="{{ $student->id }}"><i class="fa fa-trash"></i></a>
                         </td>
                      </tr>

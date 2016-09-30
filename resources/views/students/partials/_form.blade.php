@@ -19,7 +19,7 @@
                   <div class="form-group{{ $errors->has('enrollment_number') ? ' has-error' : '' }}">
 
                      <label for="enrollment_number">Matrícula</label>
-                     <input id="enrollment_number" name="enrollment_number" class="form-control" placeholder="Matrícula" maxlength="6" value="{{ old( 'enrollment_number', $student->enrollment_number ?? "" ) }}" />
+                     <input id="enrollment_number" name="enrollment_number" class="form-control" placeholder="Matrícula" maxlength="6" value="{{ old( 'enrollment_number', $student->enrollment_number ?? "" ) }}" {{ $student->id ? "disabled" : "" }} />
 
                      @if ($errors->has('enrollment_number'))
                   	    <span class="help-block">
@@ -255,7 +255,7 @@
 
                      <label>Estado</label>
 
-                     <select class="form-control select2" style="width: 100%;">
+                     <select name="address_state" id="address_state" class="form-control select2">
                         <option value="PE">Pernambuco</option>
                         <option value="PR">Paraíba</option>
                         <option value="RN">Rio Grande do Norte</option>
@@ -358,7 +358,18 @@
 
       $(document).ready(function(){
 
+         @if( $student->serie_id && $student->serie->course->id )
+            $("#course_id").val( "{{ $student->serie->course->id }}" );
+         @endif
+
          $("#course_id").trigger("change");
+
+         @if( $student->serie_id )
+
+            var option = $("<option>{{ $student->serie->name }}</option>").val( "{{ $student->serie_id }}" );
+            $("#serie_id").append( option ).trigger("change");
+
+         @endif
 
       });
 

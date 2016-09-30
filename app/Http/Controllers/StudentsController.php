@@ -17,6 +17,7 @@ class StudentsController extends BaseController
       'address_number'    => [ 'required' ],
       'address_neighbor'  => [ 'required' ],
       'address_city'      => [ 'required' ],
+      'serie_id'          => [ 'required' ],
    ];
 
    public function __construct()
@@ -58,7 +59,11 @@ class StudentsController extends BaseController
 
    }
 
-   public function update(){
+   public function update( Request $request ){
+
+      $this->validate( $request, $this->rules );
+
+      $this->updateStudent( $request );
 
    }
 
@@ -66,12 +71,14 @@ class StudentsController extends BaseController
 
    }
 
-   public function edit(){
+   public function edit( string $id ){
 
       $courses = Course::orderBy('order')->get();
+      $student = Student::find($id);
 
       return view('students.edit')
-               ->with( compact($courses) );
+               ->with( 'student', $student )
+               ->with( 'courses', $courses );
 
    }
 
@@ -92,23 +99,25 @@ class StudentsController extends BaseController
          $this->putStudent( $student, $request );
       }
 
+      return Redirect::to('students')->with('message', 'Aluno atualizado com sucesso!');
 
    }
    private function putStudent( Student $student, Request $request ){
 
-      $student->enrollment_number = $request->input( 'enrollment_number' );
-      $student->name              = $request->input( 'name'              );
-      $student->birth_date        = $request->input( 'birth_date'        );
-      $student->gender            = $request->input( 'gender'            );
-      $student->father_name       = $request->input( 'father_name'       );
-      $student->mother_name       = $request->input( 'mother_name'       );
-      $student->address_name      = $request->input( 'address_name'      );
-      $student->address_number    = $request->input( 'address_number'    );
-      $student->address_neighbor  = $request->input( 'address_neighbor'  );
-      $student->address_city      = $request->input( 'address_city'      );
-      $student->address_state     = $request->input( 'address_state'     );
-      $student->phone_number      = $request->input( 'phone_number'      );
-      $student->discount          = $request->input( 'discount'          );
+      $student->enrollment_number = $request->input( 'enrollment_number'              );
+      $student->name              = strtoupper( $request->input( 'name'             ) );
+      $student->birth_date        = $request->input( 'birth_date'                     );
+      $student->gender            = $request->input( 'gender'                         );
+      $student->father_name       = strtoupper( $request->input( 'father_name'      ) );
+      $student->mother_name       = strtoupper( $request->input( 'mother_name'      ) );
+      $student->address_name      = strtoupper( $request->input( 'address_name'     ) );
+      $student->address_number    = strtoupper( $request->input( 'address_number'   ) );
+      $student->address_neighbor  = strtoupper( $request->input( 'address_neighbor' ) );
+      $student->address_city      = strtoupper( $request->input( 'address_city'     ) );
+      $student->address_state     = $request->input( 'address_state'                  );
+      $student->phone_number      = $request->input( 'phone_number'                   );
+      $student->discount          = $request->input( 'discount'                       );
+      $student->serie_id          = $request->input( 'serie_id'                       );
 
       $student->save();
 
