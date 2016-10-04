@@ -1,4 +1,9 @@
 .uppercase {
   text-transform: uppercase; }
 
+.login-page {
+  background: url("../img/bg_login.jpg") no-repeat center center fixed !important;
+  background-size: cover !important;
+  margin-top: 12%; }
+
 /*# sourceMappingURL=app.css.map */

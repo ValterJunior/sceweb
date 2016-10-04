@@ -3,3 +3,12 @@
 .uppercase {
 	text-transform: uppercase;
 }
+
+.login-page {
+    background: url('../img/bg_login.jpg') no-repeat center center fixed !important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover !important;
+    margin-top: 12%;    
+}

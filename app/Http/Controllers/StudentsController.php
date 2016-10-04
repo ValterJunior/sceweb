@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use App\Models\{Student, Course, Serie};
+use App\Library\Utils;
 
 class StudentsController extends BaseController
 {
@@ -37,8 +38,7 @@ class StudentsController extends BaseController
    public function store( Request $request ){
 
       $this->validate( $request, $this->rules );
-
-      $student = $this->createStudent( $request );
+      $this->createStudent( $request );
 
       return Redirect::to('students')->with('message', 'Aluno cadastrado com sucesso!');
 
@@ -62,12 +62,27 @@ class StudentsController extends BaseController
    public function update( Request $request ){
 
       $this->validate( $request, $this->rules );
-
       $this->updateStudent( $request );
+
+      return Redirect::to('students')->with('message', 'Aluno atualizado com sucesso!');
 
    }
 
-   public function destroy(){
+   public function destroy( string $id ){
+
+      if( isset($id) ){
+
+         $student = Student::find( $id );
+
+         if( $student ){
+            $student->delete();
+         }
+
+      }else{
+         abort(404);
+      }
+
+      return Redirect::to('students')->with('message', 'Aluno excluído com sucesso!');
 
    }
 
@@ -105,15 +120,15 @@ class StudentsController extends BaseController
    private function putStudent( Student $student, Request $request ){
 
       $student->enrollment_number = $request->input( 'enrollment_number'              );
-      $student->name              = strtoupper( $request->input( 'name'             ) );
+      $student->name              = Utils::utf8UpperCase( $request->input( 'name'             ) );
       $student->birth_date        = $request->input( 'birth_date'                     );
       $student->gender            = $request->input( 'gender'                         );
-      $student->father_name       = strtoupper( $request->input( 'father_name'      ) );
-      $student->mother_name       = strtoupper( $request->input( 'mother_name'      ) );
-      $student->address_name      = strtoupper( $request->input( 'address_name'     ) );
-      $student->address_number    = strtoupper( $request->input( 'address_number'   ) );
-      $student->address_neighbor  = strtoupper( $request->input( 'address_neighbor' ) );
-      $student->address_city      = strtoupper( $request->input( 'address_city'     ) );
+      $student->father_name       = Utils::utf8UpperCase( $request->input( 'father_name'      ) );
+      $student->mother_name       = Utils::utf8UpperCase( $request->input( 'mother_name'      ) );
+      $student->address_name      = Utils::utf8UpperCase( $request->input( 'address_name'     ) );
+      $student->address_number    = Utils::utf8UpperCase( $request->input( 'address_number'   ) );
+      $student->address_neighbor  = Utils::utf8UpperCase( $request->input( 'address_neighbor' ) );
+      $student->address_city      = Utils::utf8UpperCase( $request->input( 'address_city'     ) );
       $student->address_state     = $request->input( 'address_state'                  );
       $student->phone_number      = $request->input( 'phone_number'                   );
       $student->discount          = $request->input( 'discount'                       );

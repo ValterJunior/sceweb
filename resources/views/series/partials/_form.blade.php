@@ -35,7 +35,7 @@
                   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
                      <label for="name">Nome</label>
-                     <input id="name" name="name" class="form-control" placeholder="Nome do curso" value="{{ old( 'name', $serie->name ?? "" ) }}" />
+                     <input id="name" name="name" class="form-control" placeholder="Nome da série" value="{{ old( 'name', $serie->name ?? "" ) }}" />
 
                      @if ($errors->has('name'))
                   	    <span class="help-block">

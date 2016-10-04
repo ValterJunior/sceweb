@@ -19,7 +19,15 @@
                   <div class="form-group{{ $errors->has('enrollment_number') ? ' has-error' : '' }}">
 
                      <label for="enrollment_number">Matrícula</label>
-                     <input id="enrollment_number" name="enrollment_number" class="form-control" placeholder="Matrícula" maxlength="6" value="{{ old( 'enrollment_number', $student->enrollment_number ?? "" ) }}" {{ $student->id ? "disabled" : "" }} />
+
+                     <?php $enrollment_number = old( 'enrollment_number', $student->enrollment_number ?? "" ); ?>
+
+                     @if( $student->id )
+                        <input type="hidden" id="enrollment_number" name="enrollment_number" value="{{ $enrollment_number }}"/>
+                        <input class="form-control" value="{{ $enrollment_number }}" disabled />
+                     @else
+                        <input id="enrollment_number" name="enrollment_number" class="form-control" placeholder="Matrícula" maxlength="6" value="{{ $enrollment_number }}"/>
+                     @endif
 
                      @if ($errors->has('enrollment_number'))
                   	    <span class="help-block">
@@ -126,9 +134,9 @@
 
                      <label>Sexo</label>
 
-                     <select class="form-control select2" style="width: 100%;">
-                        <option value="M">Masculino</option>
-                        <option value="F">Feminino</option>
+                     <select id="gender" name="gender" class="form-control select2">
+                        <option value="M" {{ old('gender', $student->gender ?? "") === 'M' ? 'selected' : '' }}>Masculino</option>
+                        <option value="F" {{ old('gender', $student->gender ?? "") === 'F' ? 'selected' : '' }}>Feminino</option>
                      </select>
 
                   </div>
@@ -309,7 +317,7 @@
                            <i class="fa fa-dollar"></i>
                         </div>
 
-                        <input id="discount" name="discount" class="form-control" decimal value="{{ old( 'discount', $student->discount ?? "" ) }}" />
+                        <input id="discount" name="discount" class="form-control decimal" value="{{ old( 'discount', $student->discount ?? "" ) }}" />
 
                      </div>
 
