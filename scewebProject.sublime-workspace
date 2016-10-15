@@ -19,41 +19,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "resources/assets/sass/app.scss",
-			"settings":
-			{
-				"buffer_size": 380,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "resources/views/series/partials/_form.blade.php",
-			"settings":
-			{
-				"buffer_size": 2119,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/layouts/login.blade.php",
-			"settings":
-			{
-				"buffer_size": 642,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "public/css/app.css",
-			"settings":
-			{
-				"buffer_size": 237,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -128,6 +93,10 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Valtinho/Projects/sceweb/resources/assets/sass/app.scss",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/partials/_form.blade.php",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/login.blade.php",
+		"/C/Users/Valtinho/Projects/sceweb/public/css/app.css",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/index.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers/SeriesController.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers/StudentsController.php",
@@ -142,8 +111,6 @@
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/courses/index.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/app.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/index.blade.php",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/partials/_form.blade.php",
-		"/C/Users/Valtinho/Projects/sceweb/resources/assets/sass/app.scss",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/main.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/create.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/edit.blade.php",
@@ -197,125 +164,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "resources/assets/sass/app.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 380,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								129,
-								129
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "resources/views/series/partials/_form.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2119,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1001,
-								1001
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 3,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "resources/views/layouts/login.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 642,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								210,
-								210
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/css/app.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 237,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								46,
-								46
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
