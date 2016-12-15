@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use App\Helpers\DateHelper;
 
 class User extends Eloquent implements \Illuminate\Contracts\Auth\Authenticatable,
                                        \Illuminate\Contracts\Auth\CanResetPassword
@@ -31,6 +32,16 @@ class User extends Eloquent implements \Illuminate\Contracts\Auth\Authenticatabl
     public function getEmailForPasswordReset()
     {
         return $this->email;
+    }
+
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
+
+    public function getTextCreationDate(){
+
+        return DateHelper::getMonthText( $this->created_at ) . ' de ' . $this->created_at->format('Y');
+
     }
     
 }

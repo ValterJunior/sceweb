@@ -39,7 +39,7 @@
 
                            <p>
                               {{ Auth::user()->name }}
-                              <small>Membro desde Julho de 2016.</small>
+                              <small> {{ 'Membro desde ' . Auth::user()->getTextCreationDate() . '.' }}</small>
                            </p>
                         </li>
                         <!-- Menu Body -->
@@ -49,14 +49,19 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                            <div class="pull-right">
-                              <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"> Sair</a>
+                              <a href="#" class="btn btn-default btn-flat"> Perfil</a>
                            </div>
                         </li>
                      </ul>
                   </li>
                   <!-- Control Sidebar Toggle Button -->
+                  @if(Auth::user()->admin)
+                     <li>
+                        <a href="{{ url('/company') }}"><i class="fa fa-gears"></i></a>
+                     </li>
+                  @endif
                   <li>
-                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                     <a href="{{ url('/logout') }}">Sair</a>
                   </li>
                </ul>
             </div>

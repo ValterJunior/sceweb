@@ -15,7 +15,11 @@ class UserTableSeeder extends Seeder
 
         DB::table('users')->truncate();
 
-        $user = new User( ['name' => 'Zilma Cristina', 'email' => 'diretoria.iesr@gmail.com', 'password' => bcrypt('1')] );
+        $user = new User( ['name' => 'Zilma Cristina', 
+                           'email' => 'diretoria.iesr@gmail.com', 
+                           'password' => bcrypt('1'),
+                           'admin' => true
+                          ] );
         $user->save();
 
     }

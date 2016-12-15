@@ -40,7 +40,7 @@
                      <tr>
                         <td>{{ $student->enrollment_number }}</td>
                         <td>{{ $student->name }}</td>
-                        <td> {{ $student->serie->course->name }} </td>
+                        <td> <a href="{{ action('CoursesController@show', ['id' => $student->serie->course->id]) }}">{{ $student->serie->course->name }}</a></td>
                         <td> {{ $student->serie->name }} </td>
                         <td width="120">
                            <a href="{{ action('StudentsController@edit', ['id' => $student->id] ) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>

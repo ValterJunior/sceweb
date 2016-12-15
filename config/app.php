@@ -163,6 +163,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
 
     ],
 
@@ -212,6 +213,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Moloquent' => Jenssegers\Mongodb\Eloquent\Model::class,
+        'DateHelper' => \App\Helpers\Facades\DateHelper::class,
 
     ],
 

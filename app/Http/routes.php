@@ -18,9 +18,10 @@ Route::get('dashboard', 'DashboardController@index');
 Route::get('courses/reorder/{id}/{direction}', 'CoursesController@reorder' );
 Route::get('courses/{courses}/series/reorder/{id}/{direction}', 'SeriesController@reorder' );
 
-Route::resource( 'students', 'StudentsController' );
-Route::resource( 'courses' , 'CoursesController'  );
+Route::resource('students', 'StudentsController' );
+Route::resource('courses' , 'CoursesController'  );
 Route::resource('courses.series', 'SeriesController');
+Route::resource('company', 'CompanyController');
 
 Route::get('series', 'SeriesController@index');
 Route::post('series', 'SeriesController@store');
