@@ -30,16 +30,6 @@ class CreateCompanyTable extends Migration
             $table->string('slogan');
             $table->string('operation_act_number');
             $table->date('ploy_date');
-            $table->string('manager_cpf');
-            $table->string('manager_name');
-            $table->string('manager_occupation');
-            $table->string('manager_email');
-            $table->string('secretary_name');
-            $table->decimal('bankslip_value',15,2);
-            $table->decimal('bankslip_fine',15,2);
-            $table->decimal('bankslip_interest',15,2);
-            $table->string('bankslip_paymentplace');
-            $table->string('bankslip_observations');
             $table->timestamps();
         });    
     }

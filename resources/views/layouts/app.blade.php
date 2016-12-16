@@ -27,6 +27,34 @@
 
             <div class="navbar-custom-menu">
                <ul class="nav navbar-nav">
+                  @if(Auth::user()->admin)
+                     <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                           <span><i class="fa fa-bank"></i></span>
+                           <span class="hidden-xs"> {{ ucFirst(Auth::user()->company->name) }}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                           <!-- User image -->
+                           <li class="user-header">
+                              <img src="/img/user2-160x160.jpg" alt="User Image" class="user-image"></img>
+
+                              <p>
+                                 {{ Auth::user()->company->name }}
+                              </p>
+                           </li>
+                           <!-- Menu Body -->
+                           <li class="user-body">
+                              <!-- /.row -->
+                           </li>
+                           <!-- Menu Footer-->
+                           <li class="user-footer">
+                              <div class="pull-right">
+                                 <a href="{{ url('/company') }}" class="btn btn-default btn-flat"> Cadastro</a>
+                              </div>
+                           </li>
+                        </ul>
+                     </li>
+                  @endif
                   <li class="dropdown user user-menu">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="/img/user2-160x160.jpg" alt="User Image" class="user-image"></img>
@@ -57,7 +85,7 @@
                   <!-- Control Sidebar Toggle Button -->
                   @if(Auth::user()->admin)
                      <li>
-                        <a href="{{ url('/company') }}"><i class="fa fa-gears"></i></a>
+                        <a href="{{ url('/settings') }}"><i class="fa fa-gears"></i></a>
                      </li>
                   @endif
                   <li>

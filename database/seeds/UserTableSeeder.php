@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\{User,Company};
 
 class UserTableSeeder extends Seeder
 {
@@ -18,7 +18,8 @@ class UserTableSeeder extends Seeder
         $user = new User( ['name' => 'Zilma Cristina', 
                            'email' => 'diretoria.iesr@gmail.com', 
                            'password' => bcrypt('1'),
-                           'admin' => true
+                           'admin' => true,
+                           'company_id' => Company::first()->id
                           ] );
         $user->save();
 

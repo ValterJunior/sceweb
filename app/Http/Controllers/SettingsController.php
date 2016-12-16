@@ -6,15 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class CompanyController extends BaseController
+class SettingsController extends BaseController
 {
-
     public function __construct()
     {
-      $this->setTitle( 'Instituição', 'Dashboard' );
+      $this->setTitle( 'Configurações', 'Dashboard' );
       parent::__construct();
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +20,7 @@ class CompanyController extends BaseController
      */
     public function index()
     {
-        return view('company.index');
+        return view('settings.index');
     }
 
     /**
