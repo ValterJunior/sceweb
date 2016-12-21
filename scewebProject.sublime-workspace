@@ -4,12 +4,16 @@
 		"selected_items":
 		[
 			[
-				"max",
-				"maxlength\tAttr"
+				"input",
+				"input-group-addon"
 			],
 			[
-				"input",
-				"inputmask"
+				"input-g",
+				"input-group-addon"
+			],
+			[
+				"max",
+				"maxlength\tAttr"
 			],
 			[
 				"S",
@@ -20,20 +24,28 @@
 	"buffers":
 	[
 		{
-			"file": "resources/views/layouts/app.blade.php",
+			"file": "resources/views/company/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 11724,
+				"buffer_size": 9136,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "database/seeds/CompanyTableSeeder.php",
+			"file": "resources/views/students/partials/_form.blade.php",
 			"settings":
 			{
-				"buffer_size": 1218,
+				"buffer_size": 13274,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "database/migrations/2016_12_15_002514_create_company_table.php",
+			"settings":
+			{
+				"buffer_size": 1243,
 				"line_ending": "Unix"
 			}
 		}
@@ -93,22 +105,35 @@
 	[
 		"/C/Users/Valtinho/Projects/sceweb",
 		"/C/Users/Valtinho/Projects/sceweb/app",
-		"/C/Users/Valtinho/Projects/sceweb/app/Http",
+		"/C/Users/Valtinho/Projects/sceweb/app/Helpers",
+		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/Facades",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers",
-		"/C/Users/Valtinho/Projects/sceweb/app/Models",
 		"/C/Users/Valtinho/Projects/sceweb/database",
-		"/C/Users/Valtinho/Projects/sceweb/database/migrations",
-		"/C/Users/Valtinho/Projects/sceweb/database/seeds",
 		"/C/Users/Valtinho/Projects/sceweb/resources",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/company",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/settings"
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/partials",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/settings",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/students",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/partials"
 	],
 	"file_history":
 	[
-		"/C/Users/Valtinho/Projects/sceweb/database/migrations/2016_12_15_002514_create_company_table.php",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/app.blade.php",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/partials/_form.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers/CompanyController.php",
+		"/C/Users/Valtinho/Projects/sceweb/database/seeds/CompanyTableSeeder.php",
+		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/StringHelper.php",
+		"/C/Users/Valtinho/Projects/sceweb/config/app.php",
+		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers/SeriesController.php",
+		"/C/Users/Valtinho/Projects/sceweb/app/Providers/HelperServiceProvider.php",
+		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/Facades/StringHelper.php",
+		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/DateHelper.php",
+		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/Facades/DateHelper.php",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/partials/_form.blade.php",
+		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/edit.blade.php",
+		"/C/Users/Valtinho/Projects/sceweb/database/migrations/2016_12_15_002514_create_company_table.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/routes.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Models/Company.php",
 		"/C/Users/Valtinho/Projects/sceweb/database/migrations/2016_12_16_022725_create_settings.php",
@@ -118,16 +143,10 @@
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers/SettingsController.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/company/index.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/settings/index.blade.php",
-		"/C/Users/Valtinho/Projects/sceweb/database/seeds/CompanyTableSeeder.php",
 		"/C/Users/Valtinho/Projects/sceweb/database/seeds/DatabaseSeeder.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Models/Settings.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Models/User.php",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/app.blade.php",
-		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/DateHelper.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/dashboard/index.blade.php",
-		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/Facades/DateHelper.php",
-		"/C/Users/Valtinho/Projects/sceweb/app/Providers/HelperServiceProvider.php",
-		"/C/Users/Valtinho/Projects/sceweb/config/app.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/main.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Models/Student.php",
 		"/C/Users/Valtinho/Projects/sceweb/storage/logs/laravel.log",
@@ -136,12 +155,9 @@
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/index.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/tests/LoginTest.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/assets/sass/app.scss",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/partials/_form.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/login.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/public/css/app.css",
-		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers/SeriesController.php",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers/StudentsController.php",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/partials/_form.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/partials/_modal_delete.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/edit.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/public/js/utils.js",
@@ -150,7 +166,6 @@
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/courses/index.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/index.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/create.blade.php",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/edit.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/database/migrations/2016_08_18_040652_create_students_table.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/courses/show.blade.php",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts/partials/_javascripts.blade.php",
@@ -160,7 +175,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -201,24 +216,52 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "resources/views/layouts/app.blade.php",
+					"file": "resources/views/company/index.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11724,
+						"buffer_size": 9136,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1352,
-								1352
+								2498,
+								2498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax"
+						},
+						"translation.x": 44.0,
+						"translation.y": 680.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "resources/views/students/partials/_form.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13274,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -227,28 +270,28 @@
 							"tab_size": 3,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 32.0,
+						"translation.x": -0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "database/seeds/CompanyTableSeeder.php",
+					"buffer": 2,
+					"file": "database/migrations/2016_12_15_002514_create_company_table.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1218,
+						"buffer_size": 1243,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1013,
-								1013
+								863,
+								868
 							]
 						],
 						"settings":
@@ -261,7 +304,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

@@ -15,19 +15,18 @@ class CompanyTableSeeder extends Seeder
         DB::table('companies')->truncate();
 
         $company = new Company( [ 'cnpj' => '12828622000191', 
-        	                      'name' => 'Instituto Educacional Santa Rosa', 
-           	                      'address_name' => 'Rua Presidente Costa e Silva',
+        	                      'name' => 'INSTITUTO EDUCACIONAL SANTA ROSA', 
+           	                      'address_name' => 'RUA PRESIDENTE COSTA E SILVA',
         	                      'address_number' => '487',
-	        	                  'address_neighbor' => 'Santa Rosa',
+	        	                  'address_neighbor' => 'SANTA ROSA',
 	        	                  'address_postalcode' => '55540000',
-	        	                  'address_city' => 'Palmares',
+	        	                  'address_city' => 'PALMARES',
 	        	                  'address_state' => 'PE',
 	        	                  'phone_areacode' => '81',
 	        	                  'phone_number' => '36622376',
 	        	                  'email' => 'diretoria.iesr@gmail.com',
 	        	                  'slogan' => 'Educando para o Futuro',
-	        	                  'operation_act_number' => '3966',
-	        	                  'ploy_date' => date_create('1994-07-30')
+	        	                  'operation_act_number' => '3966'
         	              ] );
         $company->save();
 

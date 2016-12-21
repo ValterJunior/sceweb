@@ -214,7 +214,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Moloquent' => Jenssegers\Mongodb\Eloquent\Model::class,
         'DateHelper' => \App\Helpers\Facades\DateHelper::class,
-
+        'StringHelper' => \App\Helpers\Facades\StringHelper::class,
     ],
 
 ];

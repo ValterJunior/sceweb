@@ -31,7 +31,7 @@
                      <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                            <span><i class="fa fa-bank"></i></span>
-                           <span class="hidden-xs"> {{ ucFirst(Auth::user()->company->name) }}</span>
+                           <span class="hidden-xs"> {{ StringHelper::captalizeEachWord(Auth::user()->company->name) }}</span>
                         </a>
                         <ul class="dropdown-menu">
                            <!-- User image -->
@@ -39,7 +39,7 @@
                               <img src="/img/user2-160x160.jpg" alt="User Image" class="user-image"></img>
 
                               <p>
-                                 {{ Auth::user()->company->name }}
+                                 {{ StringHelper::captalizeEachWord(Auth::user()->company->name) }}
                               </p>
                            </li>
                            <!-- Menu Body -->
@@ -58,7 +58,7 @@
                   <li class="dropdown user user-menu">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="/img/user2-160x160.jpg" alt="User Image" class="user-image"></img>
-                        <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                        <span class="hidden-xs">{{ StringHelper::captalizeEachWord(Auth::user()->name) }}</span>
                      </a>
                      <ul class="dropdown-menu">
                         <!-- User image -->

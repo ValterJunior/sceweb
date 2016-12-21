@@ -121,7 +121,10 @@
 
                   <div class="form-group">
                      <label for="birth_date">Data de Nascimento</label>
-                     <input id="birth_date" name="birth_date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" data-mask value="{{ old( 'birth_date', $student->birth_date ?? "" ) }}" />
+                     <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input id="birth_date" name="birth_date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy', 'placeholder': '__/__/____'" data-mask value="{{ old( 'birth_date', $student->birth_date ?? "" ) }}" />
+                     </div>
                   </div>
 
                </div>

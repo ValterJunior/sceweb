@@ -19,6 +19,11 @@ class HelperServiceProvider extends ServiceProvider
 	    	return new \App\Helpers\DateHelper;
 		});
 
+        $this->app->bind('StringHelper', function()
+        {
+            return new \App\Helpers\StringHelper;
+        });
+
 	}
 
 
