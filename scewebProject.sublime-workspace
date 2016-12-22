@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"scr",
+				"src"
+			],
+			[
 				"input",
 				"input-group-addon"
 			],
@@ -27,9 +31,18 @@
 			"file": "resources/views/company/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 9136,
+				"buffer_size": 10083,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/layouts/app.blade.php",
+			"settings":
+			{
+				"buffer_size": 11829,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -107,13 +120,11 @@
 		"/C/Users/Valtinho/Projects/sceweb/app",
 		"/C/Users/Valtinho/Projects/sceweb/app/Helpers",
 		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/Facades",
-		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers",
 		"/C/Users/Valtinho/Projects/sceweb/database",
 		"/C/Users/Valtinho/Projects/sceweb/resources",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/company",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/series/partials",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/settings",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/students",
 		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/partials"
@@ -225,23 +236,24 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9136,
+						"buffer_size": 10083,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2498,
-								2498
+								8326,
+								8326
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax"
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 44.0,
-						"translation.y": 680.0,
+						"translation.x": 0.0,
+						"translation.y": 3905.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -249,6 +261,36 @@
 				},
 				{
 					"buffer": 1,
+					"file": "resources/views/layouts/app.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1645,
+								1645
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "resources/views/students/partials/_form.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -270,15 +312,15 @@
 							"tab_size": 3,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "database/migrations/2016_12_15_002514_create_company_table.php",
 					"semi_transient": false,
 					"settings":
@@ -304,7 +346,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

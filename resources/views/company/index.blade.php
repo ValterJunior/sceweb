@@ -11,7 +11,7 @@
 		      <div class="box box-primary">
 
 		         <div class="box-header with-border">
-		            <h3 class="box-title">Dados de Institucionais</h3>
+		            <h3 class="box-title">Dados Institucionais</h3>
 		         </div>
 
 		         <div class="box-body">
@@ -170,7 +170,7 @@
 
 							</div>
 
-							<div class="col-md-1 col-xs-12">
+							<div class="col-md-2 col-xs-12">
 
 								<div class="form-group{{ $errors->has('address_postalcode') ? ' has-error' : '' }}">
 
@@ -199,7 +199,7 @@
 
 							</div>
 
-							<div class="col-md-3 col-xs-12">
+							<div class="col-md-2 col-xs-12">
 
 								<div class="form-group">
 
@@ -276,11 +276,34 @@
 
 					<div class="box-body">
 
-						<div class="row">
+						<div class="row" style="margin-bottom: 15px">
 
 							<div class="col-md-12">
 								<label for="slogan">Slogan</label>
 								<input type="text" id="slogan" name="slogan" class="form-control" placeholder="Frase que representa a instituição" value="{{ old( 'slogan', $company->slogan ?? "" ) }}">
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<label for="logo">Logomarca</label>
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="col-md-2" style="padding-right: 0px; max-width: 150px;">
+								<img src="/img/logo_placeholder.png" id="img-logo" alt="Company Image" class="img-thumbnail" style="height: 100px"></img>
+							</div>
+
+							<div class="col-md-10">
+
+								<label class="btn btn-default btn-file">
+								    Selecionar imagem <input type="file" id="file-logo" style="display: none;">
+								</label>
+								<p class="help-block">Tamanho máximo da imagem: 2 Mbs.</p>
+
 							</div>
 
 						</div>
@@ -309,9 +332,23 @@
 
 	<script>
 
-		$("#email").inputmask({ alias: "email"});
 		$(".select2").select2();
 		$("[data-mask]").inputmask();
+
+		$("#file-logo").change(function(){
+
+			var file = document.querySelector('#file-logo').files[0];
+		 	var reader = new FileReader();
+
+		 	reader.addEventListener("load", function(){
+		 		$("#img-logo").attr("src", reader.result)
+		 	}, false);
+
+		 	if(file){
+		 		reader.readAsDataURL(file);
+		 	}
+
+		 });		
 
 	</script>
 
