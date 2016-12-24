@@ -25,6 +25,10 @@ class SeriesController extends BaseController
 
       $courses = Course::orderBy('order')->get();
 
+      if( $courses ){
+        abort(404); 
+      }
+
       if( !isset($idCourse) ){
          return Redirect::route('courses.series.index', [ 'idCourse' => $courses->first()->id ] );
       }else{

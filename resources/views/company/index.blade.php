@@ -2,7 +2,7 @@
 
 @section('content')
 
-	{!!  Form::open( [ 'method' => 'PUT', 'action' => ['CompanyController@update', $company->_id] ] ) !!}
+	{!!  Form::open( [ 'method' => 'PUT', 'action' => ['CompanyController@update', 0] ] ) !!}
       
 		<div class="row">
 
@@ -189,11 +189,17 @@
 
 							<div class="col-md-2 col-xs-12">
 
-								<div class="form-group">
+								<div class="form-group{{ $errors->has('address_state') ? ' has-error' : '' }}">
 
 									<label for="address_state">Estado</label>
 
 									<select id="address_state" name="address_state" class="form-control select2"></select>
+
+									@if ($errors->has('address_state'))
+										<span class="help-block">
+										    <strong>{{ $errors->first('address_state') }}</strong>
+										</span>
+									@endif
 
 								</div>
 
@@ -201,11 +207,17 @@
 
 							<div class="col-md-2 col-xs-12">
 
-								<div class="form-group">
+								<div class="form-group{{ $errors->has('address_city') ? ' has-error' : '' }}">
 
 									<label for="address_city">Cidade</label>
 
 									<select id="address_city" name="address_city" class="form-control select2"></select>
+
+									@if ($errors->has('address_city'))
+										<span class="help-block">
+										    <strong>{{ $errors->first('address_city') }}</strong>
+										</span>
+									@endif
 
 								</div>
 
@@ -213,16 +225,24 @@
 
 							<div class="col-md-1 col-xs-12">
 
-								<div class="form-group">
+								<div class="form-group{{ $errors->has('phone_areacode') ? ' has-error' : '' }}">
+
 									<label for="phone_areacode">DDD</label>
 									<input type="text" id="phone_areacode" name="phone_areacode" class="form-control" data-inputmask='"mask": "99"' data-mask value="{{ old( 'phone_areacode', $company->phone_areacode ?? "" ) }}" />
+
+									@if ($errors->has('phone_areacode'))
+										<span class="help-block">
+										    <strong>{{ $errors->first('phone_areacode') }}</strong>
+										</span>
+									@endif
+
 								</div>
 
 							</div>
 
 							<div class="col-md-3 col-xs-12">
 
-								<div class="form-group">
+								<div class="form-group{{ $errors->has('phone_areacode') ? ' has-error' : '' }}">
 
 									<label for="phone_number">Telefone</label>
 
@@ -230,6 +250,12 @@
 										<span class="input-group-addon"><i class="fa fa-phone"></i></span>
 										<input type="text" id="phone_number" name="phone_number" class="form-control" data-inputmask='"mask": "9999-9999"' data-mask value="{{ old( 'phone_number', $company->phone_number ?? "" ) }}" />
 									</div>
+
+									@if ($errors->has('phone_number'))
+										<span class="help-block">
+										    <strong>{{ $errors->first('phone_number') }}</strong>
+										</span>
+									@endif
 
 								</div>
 
@@ -241,7 +267,7 @@
 
 							<div class="col-md-3 col-xs-12">
 
-							  <div class="form-group">
+							  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
 							     <label for="email">E-mail</label>
 
@@ -249,6 +275,12 @@
 							     	<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 							     	<input type="text" id="email" name="email" class="form-control" placeholder="E-mail da instituição" value="{{ old( 'email', $company->email ?? "" ) }}" />
 							     </div>
+
+							    @if ($errors->has('email'))
+									<span class="help-block">
+									    <strong>{{ $errors->first('email') }}</strong>
+									</span>
+								@endif 
 
 							  </div>
 
@@ -278,35 +310,40 @@
 
 						<div class="row" style="margin-bottom: 15px">
 
-							<div class="col-md-12">
+							<div class="col-md-8">
 								<label for="slogan">Slogan</label>
 								<input type="text" id="slogan" name="slogan" class="form-control" placeholder="Frase que representa a instituição" value="{{ old( 'slogan', $company->slogan ?? "" ) }}">
 							</div>
 
+							<div class="col-md-4">
+								
+								<div class="row">
+									<div class="col-md-12">
+										<label for="logo">Logomarca</label>
+									</div>
+								</div>
+
+								<div class="row">
+
+									<div class="col-md-4" style="padding-right: 0px; max-width: 150px;">
+										<img src="/img/logo_placeholder.png" id="img-logo" alt="Company Image" class="img-thumbnail" style="height: 100px"></img>
+									</div>
+
+									<div class="col-md-8">
+
+										<label class="btn btn-default btn-file">
+										    Selecionar imagem <input type="file" id="file-logo" name="logo" style="display: none;">
+										</label>
+										<p class="help-block">Tamanho máximo da imagem: 2 Mbs.</p>
+
+									</div>
+
+								</div>
+
+							</div>
+
 						</div>
 
-						<div class="row">
-							<div class="col-md-12">
-								<label for="logo">Logomarca</label>
-							</div>
-						</div>
-
-						<div class="row">
-
-							<div class="col-md-2" style="padding-right: 0px; max-width: 150px;">
-								<img src="/img/logo_placeholder.png" id="img-logo" alt="Company Image" class="img-thumbnail" style="height: 100px"></img>
-							</div>
-
-							<div class="col-md-10">
-
-								<label class="btn btn-default btn-file">
-								    Selecionar imagem <input type="file" id="file-logo" style="display: none;">
-								</label>
-								<p class="help-block">Tamanho máximo da imagem: 2 Mbs.</p>
-
-							</div>
-
-						</div>
 
 					</div>
 
@@ -333,6 +370,36 @@
 	<script>
 
 		$(".select2").select2();
+
+		$("#address_state").select2({
+		    minimumInputLength: 2,
+		    tags: [],
+		    ajax: {
+		        url: '{{ url( action('DataController@getstates') ) }}',
+		        dataType: 'json',
+		        type: "GET",
+		        quietMillis: 50,
+		        data: function (term) {
+		            return {
+		                term: term
+		            };
+		        },
+		        results: function (data) {
+		        	console.log(JSON.stringify(data));
+		            return {
+		                results: $.map(data, function (item) {
+		                	console.log(item);
+		                    return {
+		                        text: item.name,
+		                        id: item.initials
+		                    }
+		                })
+		            };
+		        },
+		        cache: true
+		    }
+		});
+
 		$("[data-mask]").inputmask();
 
 		$("#file-logo").change(function(){
