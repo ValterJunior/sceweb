@@ -372,31 +372,34 @@
 		$(".select2").select2();
 
 		$("#address_state").select2({
-		    minimumInputLength: 2,
+		    minimumInputLength: 1,
 		    tags: [],
 		    ajax: {
 		        url: '{{ url( action('DataController@getstates') ) }}',
 		        dataType: 'json',
 		        type: "GET",
 		        quietMillis: 50,
-		        data: function (term) {
+		        data: function (params) {
 		            return {
-		                term: term
+		                term: params.term,
+		                page: params.page
 		            };
 		        },
-		        results: function (data) {
-		        	console.log(JSON.stringify(data));
+		        processResults: function (data, params) {
+		        	
+		        	params.page = params.page || 1;
+
 		            return {
 		                results: $.map(data, function (item) {
-		                	console.log(item);
 		                    return {
 		                        text: item.name,
 		                        id: item.initials
 		                    }
 		                })
 		            };
+
 		        },
-		        cache: true
+		        cache: false
 		    }
 		});
 

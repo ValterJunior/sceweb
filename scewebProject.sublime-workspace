@@ -35,26 +35,16 @@
 			"file": "resources/views/company/index.blade.php",
 			"settings":
 			{
-				"buffer_size": 12127,
+				"buffer_size": 12162,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 39426 files for \"processResults\"\n\n",
-			"settings":
-			{
-				"buffer_size": 44,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
 			}
 		},
 		{
 			"file": "app/Http/Controllers/DataController.php",
 			"settings":
 			{
-				"buffer_size": 1152,
+				"buffer_size": 1308,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -159,17 +149,9 @@
 	[
 		"/C/Users/Valtinho/Projects/sceweb",
 		"/C/Users/Valtinho/Projects/sceweb/app",
-		"/C/Users/Valtinho/Projects/sceweb/app/Helpers/Facades",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http",
 		"/C/Users/Valtinho/Projects/sceweb/app/Http/Controllers",
-		"/C/Users/Valtinho/Projects/sceweb/database",
-		"/C/Users/Valtinho/Projects/sceweb/resources/lang/pt-br",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/errors",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/layouts",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/settings",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/students",
-		"/C/Users/Valtinho/Projects/sceweb/resources/views/students/partials"
+		"/C/Users/Valtinho/Projects/sceweb/database"
 	],
 	"file_history":
 	[
@@ -288,15 +270,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12127,
+						"buffer_size": 12162,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11528,
-								11528
+								11724,
+								11724
 							]
 						],
 						"settings":
@@ -305,7 +287,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5315.0,
+						"translation.y": 5490.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -313,53 +295,19 @@
 				},
 				{
 					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 44,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "app/Http/Controllers/DataController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1152,
+						"buffer_size": 1308,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								310,
-								310
+								390,
+								390
 							]
 						],
 						"settings":
@@ -374,7 +322,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "resources/lang/pt-br/validation.php",
 					"semi_transient": false,
 					"settings":
@@ -400,11 +348,11 @@
 						"translation.y": 124.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "app/Http/routes.php",
 					"semi_transient": false,
 					"settings":
@@ -416,8 +364,8 @@
 						"selection":
 						[
 							[
-								1327,
-								1327
+								1262,
+								1262
 							]
 						],
 						"settings":
@@ -425,14 +373,14 @@
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 90.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "app/Http/Controllers/CompanyController.php",
 					"semi_transient": false,
 					"settings":
@@ -458,11 +406,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "app/Http/Controllers/SeriesController.php",
 					"semi_transient": false,
 					"settings":
@@ -488,11 +436,11 @@
 						"translation.y": 2762.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "database/migrations/2016_12_15_002514_create_company_table.php",
 					"semi_transient": false,
 					"settings":
@@ -518,7 +466,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -563,7 +511,7 @@
 	"project": "scewebProject.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":

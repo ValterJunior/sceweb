@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class DataController extends Controller
 {
@@ -13,9 +13,11 @@ class DataController extends Controller
 
 		$states = $this->getStatesList();
 		$result = [];
-
+		$initials = Input::get("term");
 		foreach( $states as $state ){
-			$result[] = [ 'initials' => $state['sigla'], 'name' => $state['nome'] ];
+			if( strpos( strtolower($state['nome']), strtolower($initials) ) !== false ){
+				$result[] = [ 'initials' => $state['sigla'], 'name' => $state['nome'] ];
+			}
 		}
 
 		return response()->json($result);
