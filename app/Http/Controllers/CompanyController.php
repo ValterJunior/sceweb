@@ -54,7 +54,7 @@ class CompanyController extends BaseController
         $this->validate( $request, $this->rules );
         $this->saveCompany($request);
 
-        return Redirect::route('dashboard.index');
+        return view('dashboard.index');
 
     }
 
@@ -87,6 +87,7 @@ class CompanyController extends BaseController
         $company->phone_number         = $request->input('phone_number');
         $company->email                = $request->input('email');
         $company->slogan               = $request->input('slogan');
+        $company->logo                 = $request->input('logo');
         $company->operation_act_number = $request->input('operation_act_number');
         $company->ploy_date            = $request->input('ploy_date');
 

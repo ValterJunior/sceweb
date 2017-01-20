@@ -212,6 +212,7 @@
 									<label for="address_city">Cidade</label>
 
 									<select id="address_city" name="address_city" class="form-control select2"></select>
+									<p class="help-block">Escolha o estado para carregar a lista de cidades</p>
 
 									@if ($errors->has('address_city'))
 										<span class="help-block">
@@ -386,7 +387,7 @@
 		            };
 		        },
 		        processResults: function (data, params) {
-		        	
+
 		        	params.page = params.page || 1;
 
 		            return {
@@ -399,9 +400,30 @@
 		            };
 
 		        },
-		        cache: false
-		    }
+	        	cache: false
+		    },
+	    
 		});
+
+		$("#address_state").on("select2:select", function(){
+
+			var url = '{{ url( action('DataController@getcities', ['##']) ) }}';
+			var id  = $(this).val();
+
+			$.ajax({
+				url: url.replace("##", id),
+				success: function(serverData){
+					console.log(serverData);
+					if(serverData){
+						$("#address_city").select2('destroy').empty().select2( { data: serverData } );
+					}
+
+				}
+			});
+
+		});
+
+		$("#address_state").val("{{ old( 'address_state', $company->address_state ?? "" ) }}").trigger("change");
 
 		$("[data-mask]").inputmask();
 
