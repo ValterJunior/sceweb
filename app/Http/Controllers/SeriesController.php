@@ -25,7 +25,7 @@ class SeriesController extends BaseController
 
       $courses = Course::orderBy('order')->get();
 
-      if( $courses ){
+      if( !$courses ){
         abort(404); 
       }
 

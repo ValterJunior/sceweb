@@ -36,7 +36,7 @@
                         <ul class="dropdown-menu">
                            <!-- User image -->
                            <li class="user-header">
-                              <img src="/img/logo_placeholder.png" alt="Company Image" class="user-image"></img>
+                              <img src="{{ Auth::user()->company->logo ?? "/img/logo_placeholder.png"}}" alt="Company Image" class="user-image"></img>
 
                               <p>
                                  {{ StringHelper::captalizeEachWord(Auth::user()->company->name) }}
@@ -123,7 +123,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                <li class="header">Menu de opções</li>
-               <li>
+               <li data-item="dashboard">
                   <a href="{{ url( action('DashboardController@index') ) }}">
                      <i class="fa fa-home"></i> <span>Dashboard</span>
                   </a>
@@ -248,6 +248,16 @@
       <script src="/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 
       <script>
+
+         $("ul.sidebar-menu > li").each( function(index){
+
+            if( $(this).data("item") === "{{ $controller }}" ){
+               $(this).addClass("active");
+            }else{
+               $(this).removeClass("active");
+            }
+
+         });
 
          $("ul.sidebar-menu > li.treeview > ul.treeview-menu > li").each( function(index){
 

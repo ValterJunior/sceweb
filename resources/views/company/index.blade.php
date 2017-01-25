@@ -2,7 +2,7 @@
 
 @section('content')
 
-	{!!  Form::open( [ 'method' => 'PUT', 'action' => ['CompanyController@update', 0] ] ) !!}
+	{!!  Form::open( ['method' => 'PUT', 'action' => ['CompanyController@update', 0] ] ) !!}
       
 		<div class="row">
 
@@ -193,7 +193,9 @@
 
 									<label for="address_state">Estado</label>
 
-									<select id="address_state" name="address_state" class="form-control select2"></select>
+									<select id="address_state" name="address_state" class="form-control select2">
+										<option value="PE" selected="selected">Pernambuco</option>
+									</select>
 
 									@if ($errors->has('address_state'))
 										<span class="help-block">
@@ -211,8 +213,10 @@
 
 									<label for="address_city">Cidade</label>
 
-									<select id="address_city" name="address_city" class="form-control select2"></select>
-									<p class="help-block">Escolha o estado para carregar a lista de cidades</p>
+									<select id="address_city" name="address_city" class="form-control select2">
+										<option value="Palmares" selected="selected">Palmares</option>
+									</select>
+									{{-- <p class="help-block">Escolha o estado para carregar a lista de cidades</p> --}}
 
 									@if ($errors->has('address_city'))
 										<span class="help-block">
@@ -327,13 +331,15 @@
 								<div class="row">
 
 									<div class="col-md-4" style="padding-right: 0px; max-width: 150px;">
-										<img src="/img/logo_placeholder.png" id="img-logo" alt="Company Image" class="img-thumbnail" style="height: 100px"></img>
+										<img src="" id="img-logo" alt="Company Image" class="img-thumbnail" style="height: 100px"></img>
 									</div>
 
 									<div class="col-md-8">
 
+										<input type="hidden" id="logo" name="logo" value="{{ old( 'logo', $company->logo ?? "" ) }}"/>
+
 										<label class="btn btn-default btn-file">
-										    Selecionar imagem <input type="file" id="file-logo" name="logo" style="display: none;">
+										    Selecionar imagem <input type="file" id="file-logo" style="display: none;">
 										</label>
 										<p class="help-block">Tamanho máximo da imagem: 2 Mbs.</p>
 
@@ -370,60 +376,19 @@
 
 	<script>
 
+		$(function() {
+
+			var img = $("#logo").val();
+
+			if( !img ){
+				img = "/img/logo_placeholder.png";
+			}
+
+			$("#img-logo").attr("src", img);
+
+		});
+
 		$(".select2").select2();
-
-		$("#address_state").select2({
-		    minimumInputLength: 1,
-		    tags: [],
-		    ajax: {
-		        url: '{{ url( action('DataController@getstates') ) }}',
-		        dataType: 'json',
-		        type: "GET",
-		        quietMillis: 50,
-		        data: function (params) {
-		            return {
-		                term: params.term,
-		                page: params.page
-		            };
-		        },
-		        processResults: function (data, params) {
-
-		        	params.page = params.page || 1;
-
-		            return {
-		                results: $.map(data, function (item) {
-		                    return {
-		                        text: item.name,
-		                        id: item.initials
-		                    }
-		                })
-		            };
-
-		        },
-	        	cache: false
-		    },
-	    
-		});
-
-		$("#address_state").on("select2:select", function(){
-
-			var url = '{{ url( action('DataController@getcities', ['##']) ) }}';
-			var id  = $(this).val();
-
-			$.ajax({
-				url: url.replace("##", id),
-				success: function(serverData){
-					console.log(serverData);
-					if(serverData){
-						$("#address_city").select2('destroy').empty().select2( { data: serverData } );
-					}
-
-				}
-			});
-
-		});
-
-		$("#address_state").val("{{ old( 'address_state', $company->address_state ?? "" ) }}").trigger("change");
 
 		$("[data-mask]").inputmask();
 
@@ -433,7 +398,8 @@
 		 	var reader = new FileReader();
 
 		 	reader.addEventListener("load", function(){
-		 		$("#img-logo").attr("src", reader.result)
+		 		$("#img-logo").attr("src", reader.result);
+		 		$("#logo").val( reader.result );
 		 	}, false);
 
 		 	if(file){

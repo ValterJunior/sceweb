@@ -54,7 +54,7 @@ class CompanyController extends BaseController
         $this->validate( $request, $this->rules );
         $this->saveCompany($request);
 
-        return view('dashboard.index');
+        return Redirect::to('dashboard');
 
     }
 
