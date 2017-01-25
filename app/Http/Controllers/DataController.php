@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Input;
 class DataController extends Controller
 {
     
+  /**
+   * Method to return a list of all the Brazilian states
+   *
+   * @return JSON
+   */
 	public function getStates(){
 
 		$states = $this->getStatesList();
@@ -24,6 +29,12 @@ class DataController extends Controller
 
 	}
 
+  /**
+   * Method to return a list of all cities from a given Brazilian state
+   *
+   * @param  string initials
+   * @return JSON
+   */
 	public function getCities( String $initials ){
 
 		$cities = $this->getCitiesList( $initials );
@@ -32,6 +43,11 @@ class DataController extends Controller
 
 	}
 
+  /**
+   * Method to retrieve information of all Brazilian states in an array!
+   *
+   * @return Array
+   */
 	private function getStatesList(){
 
 		$json   = $this->getJson( 'states-cities' );
@@ -45,6 +61,12 @@ class DataController extends Controller
 
 	}
 
+  /**
+   * Method to retrieve information of all cities from a given Brazilian state in an array!
+   *
+   * @param  string initials
+   * @return array
+   */
 	private function getCitiesList( String $initials ){
 
 		$states = $this->getStatesList();
@@ -59,6 +81,12 @@ class DataController extends Controller
 
 	}
 
+  /**
+   * Method to read a json file and transform in an array of string
+   *
+   * @param  string fileName
+   * @return array
+   */
 	private function getJson( String $filename ){
 
 		$path = storage_path() . "/data/${filename}.json";

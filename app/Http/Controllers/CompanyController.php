@@ -24,6 +24,10 @@ class CompanyController extends BaseController
       'email'              => [ 'required','email' ],
    ];
 
+    /**
+     * The class' constructor
+     *
+     */
     public function __construct()
     {
       $this->setTitle( 'Instituição', 'Dashboard' );

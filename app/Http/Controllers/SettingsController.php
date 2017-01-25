@@ -8,11 +8,17 @@ use App\Http\Requests;
 
 class SettingsController extends BaseController
 {
+
+  /**
+   * The class's constructor
+   *
+   */
     public function __construct()
     {
       $this->setTitle( 'Configurações', 'Dashboard' );
       parent::__construct();
     }
+
     /**
      * Display a listing of the resource.
      *

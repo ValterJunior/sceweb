@@ -10,12 +10,17 @@ use Auth;
 class IndexController extends Controller
 {
 
+  /**
+   * The class's constructor
+   *
+   * @return Illuminate\Http\Response
+   */
    public function index(){
 
          if( Auth::guest() ){
             return Redirect::to('/login');
          }else{
-            return Redirect::to('/dashboard'); //view('home.index');
+            return Redirect::to('/dashboard');
          }
 
 

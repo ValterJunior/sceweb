@@ -10,16 +10,26 @@ use App\Models\{Course, Serie};
 class CoursesController extends BaseController
 {
 
+   // Field rules
    protected $rules = [
       'name' => [ 'required' ]
    ];
 
+   /**
+   * The class' constructor
+   *
+   */
    public function __construct()
    {
       $this->setTitle( 'Cursos', 'Cadastros' );
       parent::__construct();
    }
 
+    /**
+     * The controller's main page
+     *
+     * @return Illuminate\Http\Response
+     */
    public function index(){
 
       $courses = Course::orderBy('order')->get();
@@ -33,6 +43,12 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * Method to save a new course!
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    public function store( Request $request ){
 
       $this->validate( $request, $this->rules );
@@ -43,10 +59,20 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * The controller's page to set a new course!
+   *
+   * @return Illuminate\Http\Response
+   */
    public function create(){
       return view('courses.create');
    }
 
+   /**
+   * The controller's page to show information about a persisted course
+   *
+   * @return Illuminate\Http\Response
+   */
    public function show( string $id ){
 
       $course = Course::find( $id );
@@ -54,6 +80,12 @@ class CoursesController extends BaseController
       return view( 'courses.show' )->with( compact('course') );
    }
 
+   /**
+   * Method to update a given course!
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    public function update( Request $request ){
 
       $this->validate( $request, $this->rules );
@@ -65,6 +97,12 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * Method to delete a given course
+   *
+   * @param  string id
+   * @return Illuminate\Http\Response
+   */
    public function destroy( string $id ){
 
       if( isset($id) ){
@@ -78,6 +116,12 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * The controller's page to update a given course
+   *
+   * @param  string id
+   * @return Illuminate\Http\Response
+   */
    public function edit( string $id ){
 
       $course = Course::find($id);
@@ -90,6 +134,13 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * Method to refresh the grid's query order!
+   *
+   * @param  string id
+   * @param  string direction (up/down)
+   * @return Illuminate\Http\Response
+   */
    public function reorder( string $id, string $direction ){
 
       if( isset( $id ) && isset( $direction ) ){
@@ -147,6 +198,11 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * Method to persist a new created course from request data
+   *
+   * @param  Illuminate\Http\Request
+   */
    private function createCourse( Request $request ){
 
       $course = new Course();
@@ -155,6 +211,12 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * Method to persist a course from request data
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    private function updateCourse( Request $request ){
 
       $id     = $request->input('id');
@@ -166,6 +228,14 @@ class CoursesController extends BaseController
 
 
    }
+
+   /**
+   * Method to persist the given course into the database
+   *
+   * @param  App\Models\Course
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    private function putCourse( Course $course, Request $request ){
 
       $course->name = $request->input( 'name' );
@@ -176,6 +246,10 @@ class CoursesController extends BaseController
 
    }
 
+   /**
+   * Method to persist the calculated order into the database!
+   *
+   */
    private function updateOrders(){
 
       $courses = Course::orderBy('order')->get();

@@ -11,6 +11,7 @@ use App\Library\Utils;
 class StudentsController extends BaseController
 {
 
+   // Field rules!
    protected $rules = [
       'enrollment_number' => [ 'required' ],
       'name'              => [ 'required' ],
@@ -21,12 +22,21 @@ class StudentsController extends BaseController
       'serie_id'          => [ 'required' ],
    ];
 
+  /**
+   * The class' constructor
+   *
+   */
    public function __construct()
    {
       $this->setTitle( 'Alunos', 'Cadastros' );
       parent::__construct();
    }
 
+  /**
+   * The main controller's page
+   *
+   * @return Illuminate\Http\Response
+   */
    public function index(){
 
       $students = Student::orderBy('enrollment_number')->get();
@@ -35,6 +45,12 @@ class StudentsController extends BaseController
 
    }
 
+  /**
+   * Method responsible for persisting a new student into the database
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    public function store( Request $request ){
 
       $this->validate( $request, $this->rules );
@@ -44,6 +60,11 @@ class StudentsController extends BaseController
 
    }
 
+  /**
+   * Page responsible for typing information of a new student
+   *
+   * @return Illuminate\Http\Response
+   */
    public function create(){
 
       $student = new Student();
@@ -55,10 +76,12 @@ class StudentsController extends BaseController
 
    }
 
-   public function show(){
-
-   }
-
+  /**
+   * Method responsible for persisting a given student into the database
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    public function update( Request $request ){
 
       $this->validate( $request, $this->rules );
@@ -68,6 +91,12 @@ class StudentsController extends BaseController
 
    }
 
+  /**
+   * Method responsible for deleting a given student
+   *
+   * @param  string id
+   * @return Illuminate\Http\Response
+   */
    public function destroy( string $id ){
 
       if( isset($id) ){
@@ -86,6 +115,12 @@ class StudentsController extends BaseController
 
    }
 
+  /**
+   * Page responsible for editing information of a given student
+   *
+   * @param  string id
+   * @return Illuminate\Http\Response
+   */
    public function edit( string $id ){
 
       $courses = Course::orderBy('order')->get();
@@ -97,6 +132,12 @@ class StudentsController extends BaseController
 
    }
 
+  /**
+   * Method responsible for managing the insertion of a new student from the give request data
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    private function createStudent( Request $request ){
 
       $student = new Student();
@@ -105,6 +146,12 @@ class StudentsController extends BaseController
 
    }
 
+  /**
+   * Method responsible for managing the persistence of a given student from the a given request data
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    private function updateStudent( Request $request ){
 
       $id      = $request->input('id');
@@ -117,6 +164,13 @@ class StudentsController extends BaseController
       return Redirect::to('students')->with('message', 'Aluno atualizado com sucesso!');
 
    }
+
+  /**
+   * Method responsible for setting all request data into a db model object
+   *
+   * @param  Student
+   * @param  Illuminate\Http\Request
+   */
    private function putStudent( Student $student, Request $request ){
 
       $student->enrollment_number = $request->input( 'enrollment_number'              );

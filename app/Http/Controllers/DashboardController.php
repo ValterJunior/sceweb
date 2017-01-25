@@ -8,6 +8,11 @@ use App\Models\{Student, Course, Serie};
 
 class DashboardController extends BaseController
 {
+
+  /**
+   * The class's constructor
+   *
+   */
    public function __construct()
    {
 
@@ -17,6 +22,11 @@ class DashboardController extends BaseController
 
    }
 
+  /**
+   * The controller's main page
+   *
+   * @return Illuminate\Http\Response
+   */
     public function index(){
 
     	$studentsCount = Student::count();

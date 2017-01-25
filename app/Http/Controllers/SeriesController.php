@@ -10,17 +10,28 @@ use App\Models\{Course, Serie};
 class SeriesController extends BaseController
 {
 
+   // Field rules
    protected $rules = [
       'name'      => [ 'required' ],
       'course_id' => [ 'required' ],
    ];
 
+  /**
+   * The class's constructor
+   *
+   */
    public function __construct()
    {
       $this->setTitle( 'Séries', 'Cadastros' );
       parent::__construct();
    }
 
+  /**
+   * The controller's main page
+   *
+   * @param  string idCourse
+   * @return Illuminate\Http\Response
+   */
    public function index( string $idCourse = null ){
 
       $courses = Course::orderBy('order')->get();
@@ -48,6 +59,12 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Method to save a new given serie
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    public function store( Request $request ){
 
       $this->validate( $request, $this->rules );
@@ -59,6 +76,12 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Returns a page responsible for creating a new serie to a given course
+   *
+   * @param  string idCourse
+   * @return Illuminate\Http\Response
+   */
    public function create( string $idCourse ){
 
       $serie  = new Serie();
@@ -71,10 +94,21 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Returns a page to show information of a given serie
+   *
+   * @return Illuminate\Http\Response
+   */
    public function show(){
       return Redirect::to('series');
    }
 
+  /**
+   * Method to persist a given serie from a data request
+   *
+   * @param  Illuminate\Http\Request
+   * @return Illuminate\Http\Response
+   */
    public function update( Request $request ){
 
       $this->validate( $request, $this->rules );
@@ -87,6 +121,13 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Method to delete a given serie from a given course
+   *
+   * @param  string idCourse
+   * @param  string id
+   * @return Illuminate\Http\Response
+   */
    public function destroy( string $idCourse, string $id ){
 
       if( isset($idCourse) && isset($id) ){
@@ -94,6 +135,7 @@ class SeriesController extends BaseController
          $course = Course::find($idCourse);
          $course->series()->find($id)->delete();
          
+         // Updating order of the serie's grid!
          $this->updateOrders( $course );
 
       }else{
@@ -104,6 +146,13 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Page responsible for editing information of a given serie from a given course
+   *
+   * @param  string idCourse
+   * @param  string id
+   * @return Illuminate\Http\Response
+   */
    public function edit( string $idCourse, string $id ){
 
       $course     = Course::find($idCourse);
@@ -120,6 +169,14 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Method to refresh the order of the serie's grid information
+   *
+   * @param  string idCourse
+   * @param  string id
+   * @param  string direction
+   * @return Illuminate\Http\Response
+   */
    public function reorder( string $idCourse, string $id, string $direction ){
 
       if( isset( $idCourse ) && isset( $id ) && isset( $direction ) ){
@@ -178,6 +235,13 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Method to return a json with a list of all series in the database or
+   * a series from a given course
+   *
+   * @param  string idCourse (optional)
+   * @return JSON
+   */
    public function getseries( String $idCourse = null ){
 
       if( $idCourse ){
@@ -190,6 +254,11 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Method responsible for managing the persist of a new given serie from a request data
+   *
+   * @param  Illuminate\Http\Request
+   */
    private function createSerie( Request $request ){
 
       $serie = new Serie();
@@ -198,6 +267,11 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Method responsible for managing the update of a given serie from a request data
+   *
+   * @param  Illuminate\Http\Request
+   */
    private function updateSerie( Request $request ){
 
       $id    = $request->input('id');
@@ -209,6 +283,13 @@ class SeriesController extends BaseController
 
 
    }
+
+  /**
+   * Method responsible for persisting a given serie from a request data
+   *
+   * @param  App\Models\Serie
+   * @param  Illuminate\Http\Request
+   */
    private function putSerie( Serie $serie, Request $request ){
 
       $course_id = $request->input('course_id');
@@ -231,6 +312,11 @@ class SeriesController extends BaseController
 
    }
 
+  /**
+   * Method to persist the order of the serie's grid from a given course
+   *
+   * @param  App\Models\Course
+   */
    private function updateOrders( Course $course ){
 
       $series = $course->series()->orderBy('order')->get();
