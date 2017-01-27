@@ -38,3 +38,15 @@ function setZeroMask( id ){
     });
 
 }
+
+function formatDecimal( fieldId ){
+
+    var value = String($("#" + fieldId).val()*100);
+    $("#" + fieldId).maskMoney("mask", parseFloat( value.slice( 0, value.length - 2 ) + ',' + value.slice( value.length - 2 ) ) );
+
+}
+
+function unformatDecimal( fieldId ){
+    $("#" + fieldId).val($("#" + fieldId).maskMoney('unmasked')[0]);
+}
+

@@ -40,7 +40,11 @@ class CompanyController extends BaseController
      */
     public function index()
     {
-        $company = Company::get()->first();
+        $company = Company::find( Auth::user()->company_id );
+
+        if( !$company ){
+            abort(404);
+        }
 
         return view('company.index')->with( compact('company') );
     }
@@ -63,19 +67,17 @@ class CompanyController extends BaseController
     }
 
     /**
-     * Persist the settings' info in the DB.
+     * Persist the company's info in the DB.
      *
      * @param  \Illuminate\Http\Request  $request
      */
     private function saveCompany(Request $request)
     {
 
-        $company = Company::first();
+        $company = Company::find( $request->input("id") );
 
-        if( Company::count() > 0 ){
-            $company = Company::first();
-        }else{
-            $company = new Company();
+        if( !$company ){
+            abort(404);
         }
 
         $company->cnpj                 = $request->input('cnpj');

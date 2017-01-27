@@ -36,7 +36,7 @@ return [
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => 'Este valor não é endereço de email válido.',
+    'email'                => 'Este valor não é um endereço de email válido.',
     'exists'               => 'The selected :attribute is invalid.',
     'file'                 => 'The :attribute must be a file.',
     'filled'               => 'The :attribute field is required.',
@@ -54,7 +54,7 @@ return [
     ],
     'mimes'                => 'The :attribute must be a file of type: :values.',
     'min'                  => [
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => 'Este campo não pode ser menor que :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
         'string'  => 'The :attribute must be at least :min characters.',
         'array'   => 'The :attribute must have at least :min items.',

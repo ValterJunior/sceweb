@@ -246,6 +246,7 @@
       <script src="/plugins/input-mask/jquery.inputmask.js"></script>
       <script src="/plugins/input-mask/jquery.inputmask.regex.extensions.js"></script>
       <script src="/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
       <script>
 
