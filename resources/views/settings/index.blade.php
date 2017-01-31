@@ -160,7 +160,7 @@
 							<div class="form-group{{ $errors->has('bankslip_value') ? ' has-error' : '' }}">
 
 								<label for="bankslip_value">Valor</label>
-							 	<input type="text" id="bankslip_value" name="bankslip_value" class="form-control currency" value="{{ old( 'bankslip_value', $settings->bankslip_value ?? "" ) }}" />
+							 	<input type="numeric" id="bankslip_value" name="bankslip_value" class="form-control currency" value="{{ old( 'bankslip_value', $settings->bankslip_value ?? "" ) }}" />
 
 								@if ($errors->has('bankslip_value'))
 									<span class="help-block">
@@ -177,7 +177,7 @@
 							<div class="form-group{{ $errors->has('bankslip_fine') ? ' has-error' : '' }}">
 
 								<label for="bankslip_fine">Multa</label>
-							 	<input type="text" id="bankslip_fine" name="bankslip_fine" class="form-control currency" value="{{ old( 'bankslip_fine', $settings->bankslip_fine ?? "" ) }}" />
+							 	<input type="numeric" id="bankslip_fine" name="bankslip_fine" class="form-control currency" value="{{ old( 'bankslip_fine', $settings->bankslip_fine ?? "" ) }}" />
 
 								@if ($errors->has('bankslip_fine'))
 									<span class="help-block">
@@ -194,7 +194,7 @@
 							<div class="form-group{{ $errors->has('bankslip_interest') ? ' has-error' : '' }}">
 
 								<label for="bankslip_interest">Juros</label>
-							 	<input type="text" id="bankslip_interest" name="bankslip_interest" class="form-control currency" value="{{ old( 'bankslip_interest', $settings->bankslip_interest ?? "" ) }}" />
+							 	<input type="numeric" id="bankslip_interest" name="bankslip_interest" class="form-control currency" value="{{ old( 'bankslip_interest', $settings->bankslip_interest ?? "" ) }}" />
 
 								@if ($errors->has('bankslip_interest'))
 									<span class="help-block">

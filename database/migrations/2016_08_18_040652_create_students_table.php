@@ -16,6 +16,7 @@ class CreateStudentsTable extends Migration
       Schema::create('courses', function (Blueprint $table) {
 
           $table->unique('_id');
+          $table->string('company_id');
           $table->string('name');
           $table->integer('order');
 
@@ -40,6 +41,7 @@ class CreateStudentsTable extends Migration
            $table->unique('_id');
            $table->string('enrollment_number');
            $table->string('name');
+           $table->index('company_id');
            $table->index('serie_id');
            $table->date('birth_date');
            $table->string('gender');

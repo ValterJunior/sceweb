@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests;
 use App\Models\{Course, Serie};
+use Auth;
 
 class CoursesController extends BaseController
 {
@@ -240,6 +241,7 @@ class CoursesController extends BaseController
 
       $course->name = $request->input( 'name' );
       $course->order = Course::count() + 1;
+      $course->company_id = Auth::user()->company_id;
       $course->save();
 
       $this->updateOrders();

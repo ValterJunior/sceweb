@@ -14,13 +14,13 @@ class SettingsController extends BaseController
 
    // Fields required 
    protected $rules = [
-      'manager_cpf'           => [ 'required' ],
-      'manager_name'          => [ 'required' ],
-      'manager_occupation'    => [ 'required' ],
-      'manager_email'         => [ 'email'    ],
-      'secretary_name'        => [ 'required' ],
-      'bankslip_value'        => [ 'min:1'    ],
-      'bankslip_paymentplace' => [ 'required' ],
+      'manager_cpf'           => 'required',
+      'manager_name'          => 'required',
+      'manager_occupation'    => 'required',
+      'manager_email'         => 'email'   ,
+      'secretary_name'        => 'required',
+      'bankslip_value'        => 'numeric|min:1',
+      'bankslip_paymentplace' => 'required',
    ];
 
   /**

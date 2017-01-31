@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Moloquent;
+use App\Models\Scopes\CompanyScope;
 
 class Student extends Moloquent
 {
@@ -10,6 +11,7 @@ class Student extends Moloquent
    protected $fillable = [
       'enrollment_number',
       'name',
+      'company_id',
       'serie_id',
       'birth_date',
       'gender',
@@ -27,5 +29,11 @@ class Student extends Moloquent
    public function serie(){
       return $this->belongsTo(Serie::class);
    }
+
+   protected static function boot(){
+
+       parent::boot();
+       static::addGlobalScope(new CompanyScope);
+   }   
 
 }
