@@ -2,18 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Scopes\CompanyScope;
+use App\Models\BaseCompanyModel;
 
-class Matter extends Model
+class Matter extends BaseCompanyModel
 {
-    
-	protected static function boot(){
-
-	    parent::boot();
-	    static::addGlobalScope(new CompanyScope);
-	}
-
+ 
 	public function serie(){
 		return $this->belongsTo(Serie::class);
 	}

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Moloquent;
+use App\Models\BaseModel;
 
-class Serie extends Moloquent
+class Serie extends BaseModel
 {
 	protected $fillable = [
 	  'name',

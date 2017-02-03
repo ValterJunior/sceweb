@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests;
+use App\Models\Matter;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-
-class MatterController extends Controller
+class MatterController extends BaseController
 {
+
+  /**
+   * The class's constructor
+   *
+   */
+   public function __construct()
+   {
+      $this->setTitle( 'Matérias', 'Cadastros' );
+      parent::__construct();
+   }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +28,7 @@ class MatterController extends Controller
     {
         $matters = Matter::orderBy('name')->get();
 
-        return index('matter.index')->with( compact($matters) );
+        return view('matters.index')->with( compact($matters) );
     }
 
     /**
@@ -27,7 +38,7 @@ class MatterController extends Controller
      */
     public function create()
     {
-        //
+        return 'Matérias';
     }
 
     /**

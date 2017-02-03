@@ -15,7 +15,6 @@ class CreateMatter extends Migration
 
         Schema::create('matters', function (Blueprint $table) {
             $table->increments('id');
-            $table->index('company_id');
             $table->index('serie_id');
             $table->string('name');
             $table->string('category');

@@ -23,6 +23,7 @@ Route::resource('students'      , 'StudentsController' );
 Route::resource('courses'       , 'CoursesController'  );
 Route::resource('courses.series', 'SeriesController'   );
 Route::resource('settings'      , 'SettingsController' );
+Route::resource('matters'       , 'MatterController'   );
 
 // Company
 Route::get('company', 'CompanyController@index');

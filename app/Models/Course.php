@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Moloquent;
+use App\Models\BaseCompanyModel;
 use App\Models\Scopes\CompanyScope;
 
-class Course extends Moloquent
+class Course extends BaseCompanyModel
 {
     protected $fillable = [
       'name',
@@ -15,11 +15,5 @@ class Course extends Moloquent
    	public function series(){
       return $this->hasMany(Serie::class);
    	}
-
-	protected static function boot(){
-
-	    parent::boot();
-	    static::addGlobalScope(new CompanyScope);
-	}
 
 }

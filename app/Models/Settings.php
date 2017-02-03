@@ -2,20 +2,13 @@
 
 namespace App\Models;
 
-use Moloquent;
-use App\Models\Scopes\CompanyScope;
+use App\Models\BaseCompanyModel;
 
-class Settings extends Moloquent
+class Settings extends BaseCompanyModel
 {
     
     public function company(){
     	return $this->belongsTo(Company::class);
-    }
-
-    protected static function boot(){
-
-        parent::boot();
-        static::addGlobalScope(new CompanyScope);
     }
 
 }

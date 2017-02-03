@@ -40,7 +40,11 @@ class User extends Eloquent implements \Illuminate\Contracts\Auth\Authenticatabl
 
     public function getTextCreationDate(){
 
-        return DateHelper::getMonthText( $this->created_at ) . ' de ' . $this->created_at->format('Y');
+        if($this->created_at){
+            return DateHelper::getMonthText( $this->created_at ) . ' de ' . $this->created_at->format('Y');
+        }else{
+            return '';
+        }
 
     }
     

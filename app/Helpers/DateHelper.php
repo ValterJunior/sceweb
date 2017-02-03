@@ -15,7 +15,11 @@ class DateHelper{
 		
 		$monthsPT_BR = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
-		return $monthsPT_BR[ $date->format('n') - 1 ];
+    if($date){
+      return $monthsPT_BR[ $date->format('n') - 1 ];
+    }else{
+      return '';
+    }
 
 	}
 

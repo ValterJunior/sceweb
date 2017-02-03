@@ -178,21 +178,21 @@ class StudentsController extends BaseController
 
       if( $serie ){
 
-         $student->enrollment_number = $request->input( 'enrollment_number'              );
-         $student->name              = Utils::utf8UpperCase( $request->input( 'name'             ) );
-         $student->birth_date        = $request->input( 'birth_date'                     );
-         $student->gender            = $request->input( 'gender'                         );
+         $student->company_id        = Auth::user()->company_id;
+         $student->enrollment_number = $request->input( 'enrollment_number' );
+         $student->name              = Utils::utf8UpperCase( $request->input( 'name' ) );
+         $student->birth_date        = $request->input( 'birth_date' );
+         $student->gender            = $request->input( 'gender' );
          $student->father_name       = Utils::utf8UpperCase( $request->input( 'father_name'      ) );
          $student->mother_name       = Utils::utf8UpperCase( $request->input( 'mother_name'      ) );
          $student->address_name      = Utils::utf8UpperCase( $request->input( 'address_name'     ) );
          $student->address_number    = Utils::utf8UpperCase( $request->input( 'address_number'   ) );
          $student->address_neighbor  = Utils::utf8UpperCase( $request->input( 'address_neighbor' ) );
          $student->address_city      = Utils::utf8UpperCase( $request->input( 'address_city'     ) );
-         $student->address_state     = $request->input( 'address_state'                  );
-         $student->phone_number      = $request->input( 'phone_number'                   );
-         $student->discount          = $request->input( 'discount'                       );
-         $student->serie_id          = $request->input( 'serie_id'                       );
-         $student->company_id        = Auth::user()->company_id;
+         $student->address_state     = $request->input( 'address_state' );
+         $student->phone_number      = $request->input( 'phone_number'  );
+         $student->discount          = $request->input( 'discount'      );
+         $student->serie_id          = $request->input( 'serie_id'      );
 
          $student->save();
 
